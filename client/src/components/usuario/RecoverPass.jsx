@@ -6,13 +6,16 @@ const RecoverPass = ({ handleCerrarModalRecover }) => {
 
   const resetPassword = async (email) => {
     try {
-      const response = await fetch(Global.url + "usuarios/recoverpass", {
-        method: "PUT",
-        body: JSON.stringify({ email }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}usuarios/recoverpass`,
+        {
+          method: "PUT",
+          body: JSON.stringify({ email }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {

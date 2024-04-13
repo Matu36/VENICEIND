@@ -11,13 +11,16 @@ export default function Registro({ handleCerrarModalRegistro }) {
     e.preventDefault();
     let newUser = form;
 
-    const request = await fetch(Global.url + "usuarios/registro", {
-      method: "POST",
-      body: JSON.stringify(newUser),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
+    const request = await fetch(
+      `${import.meta.env.VITE_BACKEND_URL}usuarios/registro`,
+      {
+        method: "POST",
+        body: JSON.stringify(newUser),
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+    );
 
     if (request.status === 400) {
       setSaved("400");

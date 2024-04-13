@@ -36,13 +36,16 @@ export default function Login({ handleCerrarModalLogin }) {
 
     //Peticion al backend
 
-    const request = await fetch(Global.url + "usuarios/login", {
-      method: "POST",
-      body: JSON.stringify(userToLogin),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
+    const request = await fetch(
+      `${import.meta.env.VITE_BACKEND_URL}usuarios/login`,
+      {
+        method: "POST",
+        body: JSON.stringify(userToLogin),
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+    );
 
     const data = await request.json();
 

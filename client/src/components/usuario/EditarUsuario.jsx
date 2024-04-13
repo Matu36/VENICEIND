@@ -15,7 +15,7 @@ export default function EditarUsuario({ handleCerrarModalEdit }) {
       newUser.id = auth[0].id;
     }
 
-    const request = await fetch(Global.url + "usuarios", {
+    const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}usuarios`, {
       method: "PUT",
       body: JSON.stringify(newUser),
       headers: {
