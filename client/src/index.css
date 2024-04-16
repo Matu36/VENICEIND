@@ -1374,9 +1374,17 @@ button:focus-visible {
   height: auto;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 624px) {
   .white-bar img {
     max-width: 70px;
+  }
+}
+
+@media screen and (max-width: 624px) {
+  .white-bar button {
+    font-size: 22px;
+    margin-left: 5px;
+    margin-right: 10px;
   }
 }
 
@@ -1385,7 +1393,7 @@ button:focus-visible {
   align-items: center;
   border-bottom: solid 1px #595959;
   transition: border-bottom 0.5s ease;
-  width: 45%; /* Ajustar el ancho del contenedor según sea necesario */
+  width: 45%;
 }
 
 .inputnav {
@@ -1755,7 +1763,7 @@ button:focus-visible {
 .fixed-menu button {
   /* Resetear todos los estilos de los botones */
   border: none;
-  margin: 0;
+  margin-left: 10px;
   padding: 0;
   background: none;
   cursor: pointer;
@@ -1763,4 +1771,7 @@ button:focus-visible {
   color: inherit;
 }
 
-/* Ajusta cualquier otro estilo según sea necesario */
+.fauser {
+  margin-right: 20px;
+  margin-top: 20px;
+}

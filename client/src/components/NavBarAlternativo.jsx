@@ -168,7 +168,7 @@ export default function NavBarAlternativo({
                 </span>
               </div>
             ) : null}
-            <div>
+            <div className="fauser">
               <button
                 className="shoppingButton"
                 onClick={handleUserButtonClick}
