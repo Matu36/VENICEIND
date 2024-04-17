@@ -1,17 +1,26 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
+import {
+  MdShoppingBasket,
+  MdPerson,
+  MdAttachMoney,
+  MdMail,
+  MdOutlineEditCalendar,
+} from "react-icons/md";
 
 const SideBarAdmin = () => {
   const categories = [
-    { label: "Home", icon: "FaHome" },
-    { label: "Productos", icon: "MdShoppingBasket" },
-    { label: "Usuarios", icon: "MdPerson" },
-    { label: "Ventas", icon: "MdAttachMoney" },
-    { label: "Mensajes", icon: "MdMail" },
-    { label: "Calendario", icon: "MdOutlineEditCalendar" },
+    { label: "Home", icon: FaHome },
+    { label: "Productos", icon: MdShoppingBasket },
+    { label: "Usuarios", icon: MdPerson },
+    { label: "Ventas", icon: MdAttachMoney },
+    { label: "Mensajes", icon: MdMail },
+    { label: "Calendario", icon: MdOutlineEditCalendar },
   ];
 
   const [activeCategory, setActiveCategory] = useState(categories[0]);
+
   return (
     <div className="sidebarAdmin">
       <div className="sidebarAdmin__content">
@@ -24,7 +33,7 @@ const SideBarAdmin = () => {
             }`}
             onClick={() => setActiveCategory(category)}
           >
-            <i className={`icon ${category.icon}`}></i>
+            <category.icon className="icon" />
             {category.label}
           </Link>
         ))}
