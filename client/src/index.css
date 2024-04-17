@@ -1786,3 +1786,152 @@ button:focus-visible {
     margin-right: 15px;
   }
 }
+
+/* PANEL DE ADMIN */
+
+/* NAVBAR */
+
+.navbarAdmin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #0052cc;
+  color: white;
+}
+
+.navbarAdmin__left {
+  flex: 1;
+}
+
+.navbarAdmin__right {
+  display: flex;
+  align-items: center;
+}
+
+.navbarAdmin__title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.navbarAdmin__link {
+  color: white;
+  text-decoration: none;
+}
+
+.navbarAdmin__icons {
+  display: flex;
+}
+
+.navbarAdmin__icon-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.navbarAdmin__badge {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  transform: translate(50%, -50%);
+}
+
+/* SIDEBAR */
+
+.sidebarAdmin {
+  display: block;
+  width: 200px;
+  background-color: #0052cc;
+  color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 1;
+  left: 1;
+  height: 100%;
+}
+
+.sidebarAdmin__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  height: 80px;
+  padding: 20px 0;
+}
+
+.sidebarAdmin__image {
+  margin-left: 20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+}
+
+.sidebarAdmin__content {
+  overflow-y: auto;
+  margin-top: 80px; /* Ajusta según la altura del header */
+  padding-top: 20px; /* Añade espacio superior para separar del header */
+  align-items: center;
+  width: 100%;
+}
+
+.sidebarAdmin__button {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  padding: 10px 0; /* Reduce el padding para que ocupe todo el ancho */
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  margin-bottom: 10px; /* Añade espacio entre los botones */
+  background-color: #0052cc;
+  width: 100%; /* Asegura que el botón ocupe todo el ancho */
+}
+
+.sidebarAdmin__button:hover {
+  background-color: #0052cc;
+}
+
+.sidebarAdmin__button.active {
+  background-color: orange;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.sidebarAdmin__label {
+  margin-left: 10px; /* Añade espacio entre el icono y el texto */
+}
+
+/* Utiliza los iconos directamente en el botón para simplificar */
+.FaHome::before {
+  content: "\f015";
+}
+
+.MdShoppingBasket::before {
+  content: "\f291";
+}
+
+.MdPerson::before {
+  content: "\f503";
+}
+
+.MdAttachMoney::before {
+  content: "\f53e";
+}
+
+.MdAssignment::before {
+  content: "\f85b";
+}
+
+.MdMail::before {
+  content: "\f0e0";
+}
+
+.MdOutlineEditCalendar::before {
+  content: "\f133";
+}

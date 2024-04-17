@@ -24,7 +24,7 @@ const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}productos`, {
 //ESTO YA TRAE LA DATA
 
 const data = await request.json();
-
+console.log(data);
 const camisas = [
   ...calvin,
   ...columbia,
