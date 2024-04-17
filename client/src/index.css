@@ -1339,9 +1339,8 @@ button:focus-visible {
   left: 0;
   width: 100%;
   height: 80px;
-  z-index: 1000;
+  z-index: 1500;
   height: 20px;
-
   width: 100%;
 }
 
@@ -1366,7 +1365,7 @@ button:focus-visible {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100px;
+  height: 120px;
 }
 
 .white-bar img {
@@ -1745,13 +1744,19 @@ button:focus-visible {
 }
 
 .user-info {
-  position: absolute; /* Utiliza flexbox para alinear horizontalmente los botones */
+  position: absolute;
   top: 0;
-  right: 0; /* Alinea verticalmente los botones */
+  right: 0;
 }
 
+/* @media screen and (max-width: 740px) {
+  .user-info {
+    top: 28px;
+  }
+} */
+
 .user-info button {
-  margin-right: 5px; /* Ajusta el margen derecho entre los botones */
+  margin-right: 5px;
   border: none;
   padding: 5;
   background: none;
@@ -1761,7 +1766,6 @@ button:focus-visible {
 }
 
 .fixed-menu button {
-  /* Resetear todos los estilos de los botones */
   border: none;
   margin-left: 10px;
   padding: 0;
@@ -1774,4 +1778,11 @@ button:focus-visible {
 .fauser {
   margin-right: 20px;
   margin-top: 20px;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 740px) {
+  .fauser {
+    margin-right: 15px;
+  }
 }
