@@ -61,9 +61,25 @@ function App() {
 
     // Aplicar filtro por talle
     if (filtroTalle) {
-      camisasFiltradas = camisasFiltradas.filter((camisa) =>
-        camisa.talle.includes(filtroTalle)
-      );
+      camisasFiltradas = camisasFiltradas.filter((camisa) => {
+        // Verificar si talle es una cadena o una matriz
+        if (typeof camisa.talle === "string") {
+          // Si es una cadena, dividirla en una matriz
+          const tallesDisponibles = camisa.talle
+            .split(", ")
+            .map((talle) => talle.trim());
+          // Verificar si alguna de las tallas disponibles incluye el filtroTalle
+          return tallesDisponibles.includes(filtroTalle.trim());
+        } else {
+          // Si es una matriz, buscar directamente
+          return camisa.talle.some((talleGrupo) => {
+            const tallesDisponibles = talleGrupo
+              .split(", ")
+              .map((talle) => talle.trim());
+            return tallesDisponibles.includes(filtroTalle.trim());
+          });
+        }
+      });
     }
 
     // Aplicar filtro por precio si está definido

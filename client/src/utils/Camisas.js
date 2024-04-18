@@ -12,6 +12,19 @@ import { tommy } from "./Tommy";
 import { asics } from "./Asics";
 import { variadas } from "./Variadas";
 
+const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}productos`, {
+  method: "GET",
+  body: JSON.stringify(),
+  headers: {
+    "Content-type": "application/json",
+    Authorization: localStorage.getItem("token"),
+  },
+});
+
+//ESTO YA TRAE LA DATA
+
+const data = await request.json();
+
 const camisas = [
   ...calvin,
   ...columbia,

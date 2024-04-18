@@ -82,7 +82,6 @@ export default function NavBarAlternativo({
     }
   };
 
-  console.log(auth);
   window.addEventListener("scroll", function () {
     var blackBar = document.querySelector(".black-bar");
     var whiteBar = document.querySelector(".white-bar");
@@ -156,30 +155,35 @@ export default function NavBarAlternativo({
           <div>
             {Object.keys(auth).length > 0 ? (
               <div className="user-menu-container">
-                <span className="cerrar-sesion">
+                <span className="user-info">
                   <button
                     onClick={handleMostrarModalEdit}
-                    style={{ color: "gray" }}
+                    style={{ color: "gray", marginRight: "5px" }}
                   >
                     {auth[0].nombre ? auth[0].nombre : auth[0].email}
                   </button>
-                  <button style={{ color: "black" }} onClick={handleLogout}>
+                  <button style={{ color: "gray" }} onClick={handleLogout}>
                     Cerrar sesión
                   </button>
                 </span>
               </div>
             ) : null}
-            <button className="shoppingButton" onClick={handleUserButtonClick}>
-              <FaUser />
-            </button>
+            <div className="fauser">
+              <button
+                className="shoppingButton"
+                onClick={handleUserButtonClick}
+              >
+                <FaUser />
+              </button>
 
-            <button
-              className="shoppingButton"
-              onClick={handleMostrarModalCarrito}
-            >
-              <FiShoppingCart />
-              {carritoC > 0 && <span className="badge">{carritoC}</span>}
-            </button>
+              <button
+                className="shoppingButton"
+                onClick={handleMostrarModalCarrito}
+              >
+                <FiShoppingCart />
+                {carritoC > 0 && <span className="badge">{carritoC}</span>}
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -834,7 +834,6 @@ button:focus-visible {
   color: black;
   padding: 0px;
   margin: 30px;
- 
 }
 
 /* @media screen and (max-width: 584px) {
@@ -1340,9 +1339,8 @@ button:focus-visible {
   left: 0;
   width: 100%;
   height: 80px;
-  z-index: 1000;
+  z-index: 1500;
   height: 20px;
-
   width: 100%;
 }
 
@@ -1367,7 +1365,7 @@ button:focus-visible {
   top: 0;
   left: 0;
   width: 100%;
-  height: 80px;
+  height: 120px;
 }
 
 .white-bar img {
@@ -1375,9 +1373,17 @@ button:focus-visible {
   height: auto;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 624px) {
   .white-bar img {
     max-width: 70px;
+  }
+}
+
+@media screen and (max-width: 624px) {
+  .white-bar button {
+    font-size: 22px;
+    margin-left: 5px;
+    margin-right: 10px;
   }
 }
 
@@ -1386,7 +1392,7 @@ button:focus-visible {
   align-items: center;
   border-bottom: solid 1px #595959;
   transition: border-bottom 0.5s ease;
-  width: 45%; /* Ajustar el ancho del contenedor según sea necesario */
+  width: 45%;
 }
 
 .inputnav {
@@ -1533,11 +1539,11 @@ button:focus-visible {
 
 .login-container {
   background-color: #fff;
-  padding: 30px; 
+  padding: 30px;
   padding-top: 5px;
-  border-radius: 16px; 
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
-  border: 2px solid #ccc; 
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border: 2px solid #ccc;
   max-width: 500px;
   width: 80%;
   margin: auto;
@@ -1546,7 +1552,6 @@ button:focus-visible {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2000;
- 
 }
 
 .button-close-login {
@@ -1566,35 +1571,33 @@ button:focus-visible {
   justify-content: center;
 }
 
-
-
 .login-form {
   display: flex;
   flex-direction: column;
 }
 
 .login-form .form-group {
-  margin-bottom: 16px; 
+  margin-bottom: 16px;
 }
 
 .login-form label {
   color: black;
-  margin-bottom: 8px; 
+  margin-bottom: 8px;
   font-weight: 600;
 }
 
 .login-form input[type="email"],
 .login-form input[type="text"] {
-  width: calc(100% - 16px); 
+  width: calc(100% - 16px);
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-right: 8px; 
+  margin-right: 8px;
 }
 
 .login-form input[type="submit"] {
   width: 100%;
-  padding: 12px; 
+  padding: 12px;
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #5bb75b;
@@ -1603,13 +1606,12 @@ button:focus-visible {
   border: 1px solid #387038;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 
 .login-form input[type="submit"]:hover {
   background-color: #51a351;
 }
-
 
 /* ESTILOS PARA EL FORMULARIO DE REGISTRO DE USUARIO */
 
@@ -1636,12 +1638,12 @@ button:focus-visible {
 }
 
 .columna {
-  width: 50%; 
+  width: 50%;
 }
 
 .registroform {
-  width: 100%; 
-  margin-bottom: 16px; 
+  width: 100%;
+  margin-bottom: 16px;
 }
 
 .registroform label {
@@ -1650,7 +1652,7 @@ button:focus-visible {
 }
 
 .registroform input {
-  width: calc(90% - 16px); 
+  width: calc(90% - 16px);
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -1664,7 +1666,7 @@ button:focus-visible {
 
 .button-registro {
   width: 100%;
-  padding: 12px; 
+  padding: 12px;
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #5bb75b;
@@ -1673,18 +1675,15 @@ button:focus-visible {
   border: 1px solid #387038;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 
 .button-registro:hover {
   background-color: #51a351;
 }
 
-
-
 .registro-container span {
-  color: blue; 
- 
+  color: blue;
 }
 
 .welcome-message {
@@ -1692,14 +1691,14 @@ button:focus-visible {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.9); 
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 20px;
   border: 1px solid #ccc;
-  text-align: center; 
-  font-size: 18px; 
+  text-align: center;
+  font-size: 18px;
   font-weight: bold;
-  color: #333; 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  color: #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .welcome-message img {
@@ -1744,13 +1743,201 @@ button:focus-visible {
   background-color: #0056b3;
 }
 
+.user-info {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
+/* @media screen and (max-width: 740px) {
+  .user-info {
+    top: 28px;
+  }
+} */
 
+.user-info button {
+  margin-right: 5px;
+  border: none;
+  padding: 5;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
 
+.fixed-menu button {
+  border: none;
+  margin-left: 10px;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
 
+.fauser {
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-left: 10px;
+}
 
+@media screen and (max-width: 740px) {
+  .fauser {
+    margin-right: 15px;
+  }
+}
 
+/* PANEL DE ADMIN */
 
+/* NAVBAR */
 
+.navbarAdmin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #0052cc;
+  color: white;
+}
 
+.navbarAdmin__left {
+  flex: 1;
+}
 
+.navbarAdmin__right {
+  display: flex;
+  align-items: center;
+}
+
+.navbarAdmin__title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.navbarAdmin__link {
+  color: white;
+  text-decoration: none;
+}
+
+.navbarAdmin__icons {
+  display: flex;
+}
+
+.navbarAdmin__icon-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.navbarAdmin__badge {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  transform: translate(50%, -50%);
+}
+
+/* SIDEBAR */
+
+.sidebarAdmin {
+  display: block;
+  width: 200px;
+  background-color: #0052cc;
+  color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 1;
+  left: 1;
+  height: 100%;
+}
+
+.sidebarAdmin__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  height: 80px;
+  padding: 20px 0;
+}
+
+.sidebarAdmin__image {
+  margin-left: 20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+}
+
+.sidebarAdmin__content {
+  overflow-y: auto;
+  margin-top: 80px; /* Ajusta según la altura del header */
+  padding-top: 20px; /* Añade espacio superior para separar del header */
+  align-items: center;
+  width: 100%;
+}
+
+.sidebarAdmin__button {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  padding: 10px 0; /* Reduce el padding para que ocupe todo el ancho */
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  margin-bottom: 10px; /* Añade espacio entre los botones */
+  background-color: #0052cc;
+  width: 100%; /* Asegura que el botón ocupe todo el ancho */
+}
+
+.sidebarAdmin__button:hover {
+  background-color: #0052cc;
+}
+
+.sidebarAdmin__button.active {
+  background-color: orange;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.sidebarAdmin__label {
+  margin-left: 10px; /* Añade espacio entre el icono y el texto */
+}
+
+/* Utiliza los iconos directamente en el botón para simplificar */
+.FaHome::before {
+  content: "\f015";
+}
+
+.MdShoppingBasket::before {
+  content: "\f291";
+}
+
+.MdPerson::before {
+  content: "\f503";
+}
+
+.MdAttachMoney::before {
+  content: "\f53e";
+}
+
+.MdAssignment::before {
+  content: "\f85b";
+}
+
+.MdMail::before {
+  content: "\f0e0";
+}
+
+.MdOutlineEditCalendar::before {
+  content: "\f133";
+}
+
+.productos {
+  width: 80%;
+  float: right;
+  margin-top: 30px;
+}

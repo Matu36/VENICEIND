@@ -11,6 +11,7 @@ export default function Login({ handleCerrarModalLogin }) {
   const [registro, setRegistro] = useState(false);
   const [recover, setRecover] = useState(false);
   const [showWelcomeMessage, setShowWelcomeMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleMostrarModalRegistro = () => {
     setRegistro(true);
@@ -49,13 +50,25 @@ export default function Login({ handleCerrarModalLogin }) {
 
     const data = await request.json();
 
+    console.log(request.status);
+
     if (data.status == "success") {
       //Persistir los datos en el LocalStorage
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.returnedUsers));
       setSaved("login");
       setShowWelcomeMessage(true);
+    } else if (request.status === 403) {
+      // Mostrar mensaje de error específico para código 403
+      setErrorMessage(
+        "Las credenciales son incorrectas. Por favor, verifícalas e inténtalo de nuevo."
+      );
+      setSaved("error");
     } else {
+      // Otros códigos de error no manejados
+      setErrorMessage(
+        "Ha ocurrido un error. Por favor, inténtalo de nuevo más tarde."
+      );
       setSaved("error");
     }
   };
@@ -89,9 +102,15 @@ export default function Login({ handleCerrarModalLogin }) {
               <label htmlFor="contraseña">Contraseña</label>
               <input type="text" name="password" onChange={changed} />
             </div>
+
+            <span>{saved == "error" ? "Error al registrarse" : null}</span>
+            {saved === "error" && (
+              <strong style={{ color: "red" }}>{errorMessage}</strong>
+            )}
             <button onClick={handleMostrarModalRecover}>
               <span style={{ color: "blue" }}>¿Olvidaste tu contraeña?</span>
             </button>
+
             <strong style={{ color: "grey" }}>
               {saved === "error"
                 ? "El usuario no pertenece a Comunidad Venice"
