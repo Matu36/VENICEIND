@@ -1935,3 +1935,9 @@ button:focus-visible {
 .MdOutlineEditCalendar::before {
   content: "\f133";
 }
+
+.productos {
+  width: 80%;
+  float: right;
+  margin-top: 30px;
+}

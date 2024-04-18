@@ -17,7 +17,16 @@ export default function Productos() {
   const [search, setSearch] = useState("");
   const [productos, setProductos] = useState(data);
 
-  console.log(productos);
+  //MOSTRANDO EL FORMULARIO DE CREACION //
+
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  function handleMostrarFormulario() {
+    setMostrarFormulario(true);
+  }
+
+  function handleCerrarFormulario() {
+    setMostrarFormulario(false);
+  }
 
   //-------------------------------- SEARCHBAR --------------------------- //
 
@@ -78,7 +87,7 @@ export default function Productos() {
 
   return (
     <>
-      <div>
+      <div className="productos">
         <div
           className="input-group mb-3 inputSearch"
           style={{ maxWidth: "40%" }}
