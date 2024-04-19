@@ -9,7 +9,6 @@ const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}productos`, {
   body: JSON.stringify(),
   headers: {
     "Content-type": "application/json",
-    Authorization: localStorage.getItem("token"),
   },
 });
 
