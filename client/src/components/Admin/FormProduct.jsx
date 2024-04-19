@@ -70,10 +70,12 @@ export default function FormProduct() {
         icon: "success",
         title: "El producto ha sido creado",
         showConfirmButton: false,
-        timer: 2000, // 2 segundos
+        timer: 2000,
       });
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
 
-      // Limpiar el formulario después de crear el producto
       setProducto({
         marca: "",
         imagen: "",

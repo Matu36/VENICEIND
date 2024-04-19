@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import FormProduct from "./FormProduct";
 import Swal from "sweetalert2";
-import { MdModeEdit } from "react-icons/md";
+import { MdModeEdit, MdDelete } from "react-icons/md";
 
 const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}productos`, {
   method: "GET",
@@ -113,16 +113,66 @@ export default function Productos() {
               <button onClick={() => handleCancel()}>Cancelar</button>
             </>
           ) : (
-            <MdModeEdit
-              onClick={() =>
-                handleEdit(row.id, row.talle, row.precio, row.cantidadTotal)
-              }
-            />
+            <>
+              <MdModeEdit
+                onClick={() =>
+                  handleEdit(row.id, row.talle, row.precio, row.cantidadTotal)
+                }
+              />
+              <MdDelete
+                onClick={() => handleDelete(row.id)}
+                style={{ cursor: "pointer", marginLeft: "10px" }}
+              />
+            </>
           )}
         </div>
       ),
     },
   ];
+
+  //ELIMINAR PRODUCTO //
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}productos/delete`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem("token"),
+          },
+          body: JSON.stringify({ id }),
+        }
+      );
+
+      if (response.ok) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Producto eliminado exitosamente",
+          showConfirmButton: false,
+          // timer: 2000,
+        });
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      } else {
+        // Si hay algún problema al eliminar el producto, mostrar un mensaje de error
+        throw new Error("Error al eliminar el producto");
+      }
+    } catch (error) {
+      console.error("Error al eliminar el producto:", error);
+      // Mostrar un mensaje de error
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Hubo un error al eliminar el producto",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }
+  };
 
   const [editIndex, setEditIndex] = useState(null);
   const [editPrice, setEditPrice] = useState(null);
@@ -162,6 +212,8 @@ export default function Productos() {
           cantidadTotal: editCantidadTotal,
         };
         await saveData(updatedProduct, "productos/edit");
+
+        window.location.reload();
       }
       setEditIndex(null);
       setEditPrice(null);
