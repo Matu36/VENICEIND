@@ -1846,7 +1846,7 @@ button:focus-visible {
   background-color: #0052cc;
   color: white;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  position: fixed;
+  position: absolute;
   top: 1;
   left: 1;
   height: 100%;
