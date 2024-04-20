@@ -87,20 +87,20 @@ const login = async (req, res) => {
       }
     }
 
-    let returnedUsers;
+    // Buscar todos los usuarios si el usuario logueado tiene un rol específico
+    let returnedUsers = [];
 
-    if (requestUser.dataValues.rol !== null)
+    if (requestUser.dataValues.rol !== null) {
       returnedUsers = await Usuarios.findAll();
-    else returnedUsers = [requestUser]; // Devolver solo el usuario encontrado
-
-    // Si no se encuentran usuarios, devolver error 404 (Not Found)
-    if (!returnedUsers || returnedUsers.length === 0)
-      return res.status(404).send("Users Not Found");
-
-    const token = jwt.createToken(requestUser);
+    }
 
     // Devolver los usuarios encontrados
-    res.status(200).send({ returnedUsers, token: token, status: "success" });
+    res.status(200).send({
+      loggedUser: requestUser,
+      allUsers: returnedUsers,
+      token: jwt.createToken(requestUser),
+      status: "success",
+    });
   } catch (error) {
     console.log(error);
     // Devolver un error con el estado 500 (Internal Server Error)
