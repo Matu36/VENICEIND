@@ -50,12 +50,10 @@ export default function Login({ handleCerrarModalLogin }) {
 
     const data = await request.json();
 
-    console.log(request.status);
-
     if (data.status == "success") {
       //Persistir los datos en el LocalStorage
       localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.returnedUsers));
+      localStorage.setItem("user", JSON.stringify(data.loggedUser));
       setSaved("login");
       setShowWelcomeMessage(true);
     } else if (request.status === 403) {

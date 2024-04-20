@@ -3,6 +3,7 @@ import logo from "../assets/img/logos/LOGO 1.jpeg";
 import { FiSearch, FiShoppingCart } from "react-icons/fi";
 import { FaUser } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 export default function NavBarAlternativo({
   handleMostrarModalCarrito,
@@ -156,11 +157,16 @@ export default function NavBarAlternativo({
             {Object.keys(auth).length > 0 ? (
               <div className="user-menu-container">
                 <span className="user-info">
+                  {auth.rol !== null ? (
+                    <Link to="/admin">
+                      <button style={{ color: "gray" }}>Admin</button>{" "}
+                    </Link>
+                  ) : null}
                   <button
                     onClick={handleMostrarModalEdit}
                     style={{ color: "gray", marginRight: "5px" }}
                   >
-                    {auth[0].nombre ? auth[0].nombre : auth[0].email}
+                    {auth ? auth.nombre : auth.email}
                   </button>
                   <button style={{ color: "gray" }} onClick={handleLogout}>
                     Cerrar sesión

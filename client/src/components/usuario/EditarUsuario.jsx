@@ -12,7 +12,7 @@ export default function EditarUsuario({ handleCerrarModalEdit }) {
     e.preventDefault();
     let newUser = form;
     if (!newUser.id) {
-      newUser.id = auth[0].id;
+      newUser.id = auth.id;
     }
 
     const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}usuarios`, {
@@ -26,15 +26,14 @@ export default function EditarUsuario({ handleCerrarModalEdit }) {
 
     const data = await request.json();
 
-    if (data.status == "success") {
-      const updatedUser = { ...auth[0], ...newUser };
+    if (data.status === "success") {
+      const updatedUser = { ...auth, ...newUser };
 
-      // Actualizar el array en el localStorage
-      const updatedUserArray = [updatedUser];
-      localStorage.setItem("user", JSON.stringify(updatedUserArray));
+      // Actualizar el objeto en el localStorage
+      localStorage.setItem("user", JSON.stringify(updatedUser));
 
       // Actualizar el estado local
-      setAuth(updatedUserArray);
+      setAuth(updatedUser);
       setSaved("saved");
     } else {
       setSaved("error");
@@ -51,7 +50,7 @@ export default function EditarUsuario({ handleCerrarModalEdit }) {
       </div>
       <form className="registro" onSubmit={saveUser}>
         <div className="columna">
-          <input type="text" name="id" hidden defaultValue={auth[0].id} />
+          <input type="text" name="id" hidden defaultValue={auth.id} />
 
           <div className="registroform">
             <label htmlFor="email">Email</label>
@@ -59,7 +58,7 @@ export default function EditarUsuario({ handleCerrarModalEdit }) {
               type="email"
               name="email"
               onChange={changed}
-              placeholder={auth[0].email}
+              placeholder={auth.email}
             />
           </div>
 
@@ -74,7 +73,7 @@ export default function EditarUsuario({ handleCerrarModalEdit }) {
               type="text"
               name="nombre"
               onChange={changed}
-              placeholder={auth[0].nombre}
+              placeholder={auth.nombre}
             />
           </div>
         </div>
@@ -85,7 +84,7 @@ export default function EditarUsuario({ handleCerrarModalEdit }) {
               type="text"
               name="apellido"
               onChange={changed}
-              placeholder={auth[0].apellido}
+              placeholder={auth.apellido}
             />
           </div>
           <div className="registroform">
@@ -94,7 +93,7 @@ export default function EditarUsuario({ handleCerrarModalEdit }) {
               type="text"
               name="telefono"
               onChange={changed}
-              placeholder={auth[0].telefono}
+              placeholder={auth.telefono}
             />
           </div>
           <div className="registroform">
@@ -103,7 +102,7 @@ export default function EditarUsuario({ handleCerrarModalEdit }) {
               type="text"
               name="direccion"
               onChange={changed}
-              placeholder={auth[0].direccion}
+              placeholder={auth.direccion}
             />
           </div>
         </div>
