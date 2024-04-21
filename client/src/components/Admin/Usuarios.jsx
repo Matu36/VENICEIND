@@ -1,9 +1,19 @@
 import React from "react";
-import useAuth from "../../hooks/useAuth";
+
+const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}usuarios/all`, {
+  method: "GET",
+  body: JSON.stringify(),
+  headers: {
+    "Content-type": "application/json",
+    Authorization: localStorage.getItem("token"),
+  },
+});
+
+const data = await request.json();
+
+console.log(data);
 
 export default function Usuarios() {
-  const { allUsers } = useAuth();
-  console.log(allUsers);
   return (
     <div>
       {/* {AllUsers ? (
