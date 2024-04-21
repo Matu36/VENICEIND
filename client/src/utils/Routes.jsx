@@ -22,9 +22,6 @@ const AppRouter = () => {
 };
 
 const AdminLayout = () => {
-  const { auth, setAuth } = useAuth();
-
-  console.log(auth);
   return (
     <>
       <NavBarAdmin />

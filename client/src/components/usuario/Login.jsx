@@ -50,6 +50,8 @@ export default function Login({ handleCerrarModalLogin }) {
 
     const data = await request.json();
 
+    const allUsers = data.allUsers;
+
     if (data.status == "success") {
       //Persistir los datos en el LocalStorage
       localStorage.setItem("token", data.token);

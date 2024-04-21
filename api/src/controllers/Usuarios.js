@@ -108,6 +108,37 @@ const login = async (req, res) => {
   }
 };
 
+const getAllUsers = async (req, res) => {
+  try {
+    // Consulta a la base de datos para obtener todos los usuarios
+    const allUsers = await Usuarios.findAll();
+
+    // Devuelve la lista de usuarios en la respuesta
+    return res.status(200).json({ allUsers });
+  } catch (error) {
+    console.error("Error al obtener todos los usuarios:", error);
+    // Devuelve un mensaje de error en caso de fallo
+    return res.status(500).json({ error: "Error interno del servidor" });
+  }
+};
+
+const getLastLoggedInUsers = async (req, res) => {
+  try {
+    // Consulta a la base de datos para obtener los últimos 5 usuarios logueados
+    const lastLoggedInUsers = await Usuarios.findAll({
+      order: [["createdAt", "DESC"]], // Ordena por fecha de creación en orden descendente
+      limit: 5, // Limita el resultado a 5 usuarios
+    });
+
+    // Devuelve la lista de los últimos 5 usuarios logueados en la respuesta
+    return res.status(200).json({ lastLoggedInUsers });
+  } catch (error) {
+    console.error("Error al obtener los últimos usuarios logueados:", error);
+    // Devuelve un mensaje de error en caso de fallo
+    return res.status(500).json({ error: "Error interno del servidor" });
+  }
+};
+
 const putUser = async (req, res) => {
   try {
     //ACA BUSCA POR ID, es decir, le permite modificar al usuario una vez logueado o autenticado //
@@ -206,4 +237,6 @@ module.exports = {
   registro,
   putUser,
   resetPassword,
+  getAllUsers,
+  getLastLoggedInUsers,
 };

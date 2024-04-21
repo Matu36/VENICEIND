@@ -5,6 +5,8 @@ const {
   registro,
   putUser,
   resetPassword,
+  getAllUsers,
+  getLastLoggedInUsers,
 } = require("../controllers/Usuarios");
 
 const {
@@ -34,6 +36,8 @@ const router = Router();
 router.post("/usuarios/login", login);
 router.post("/usuarios/registro", registro);
 router.put("/usuarios", check.auth, putUser);
+router.put("/usuarios/lastFive", getLastLoggedInUsers);
+router.put("/usuarios/all", check.auth, getAllUsers);
 router.put("/usuarios/recoverpass", resetPassword);
 router.get("/productos", getProductos);
 router.post("/productos/create", check.auth, createProducto);
