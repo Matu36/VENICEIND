@@ -9,6 +9,7 @@ import Usuarios from "../components/Admin/Usuarios";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import Detalle from "../components/Detalle";
 
 const AppRouter = () => {
   return (
@@ -16,6 +17,7 @@ const AppRouter = () => {
       <AuthProvider>
         <Routes>
           <Route path="/" element={<App />} />
+          <Route path="/productos/:id" element={<Detalle />} />
           <Route path="/admin/*" element={<AdminLayout />} />
         </Routes>
       </AuthProvider>

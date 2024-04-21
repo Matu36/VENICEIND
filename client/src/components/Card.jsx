@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CardAmpliada from "./CardAmpliada";
 import soldout from "../assets/img/soldOut.png";
+import { useNavigate } from "react-router-dom";
 const Card = ({
   id,
   marca,
@@ -16,6 +17,12 @@ const Card = ({
   const [showAlert, setShowAlert] = useState(false);
   const [currentImage, setCurrentImage] = useState(imagen);
   const [showModal, setShowModal] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleDetalleClick = () => {
+    navigate(`/productos/${id}`);
+  };
 
   const handleImageClick = () => {
     setShowModal(true);
@@ -105,6 +112,7 @@ const Card = ({
         <p style={{ color: "grey", fontSize: "10px", marginTop: "10px" }}>
           Código: {codigo}
         </p>
+        <button onClick={handleDetalleClick}>Ver detalle</button>
 
         {Cantidad === 0 && (
           <div className="soldOut-container">
