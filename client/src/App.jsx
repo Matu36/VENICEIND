@@ -16,6 +16,18 @@ import Login from "./components/usuario/Login";
 import useAuth from "./hooks/useAuth";
 import EditarUsuario from "./components/usuario/EditarUsuario";
 
+const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}productos`, {
+  method: "GET",
+  body: JSON.stringify(),
+  headers: {
+    "Content-type": "application/json",
+  },
+});
+
+//ESTO YA TRAE LA DATA
+
+const data = await request.json();
+
 function App() {
   const [selectedMarca, setSelectedMarca] = useState();
   const [filtroPrecio, setFiltroPrecio] = useState();
@@ -57,7 +69,7 @@ function App() {
   }, []);
 
   const filtrarPorTalleYPrecio = () => {
-    let camisasFiltradas = camisas;
+    let camisasFiltradas = data;
 
     // Aplicar filtro por talle
     if (filtroTalle) {
@@ -114,7 +126,7 @@ function App() {
     setFiltroPrecioTodos("");
   };
 
-  const filteredCamisas = camisas.filter((camisa) => {
+  const filteredCamisas = data.filter((camisa) => {
     if (selectedMarca === "Todas las marcas") {
       return true;
     }

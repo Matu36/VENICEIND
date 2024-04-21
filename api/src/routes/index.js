@@ -11,6 +11,7 @@ const {
 
 const {
   getProductos,
+  getProductoById,
   putProductos,
   createProducto,
   deleteProducto,
@@ -40,6 +41,7 @@ router.get("/usuarios/lastFive", getLastLoggedInUsers);
 router.get("/usuarios/all", check.auth, getAllUsers);
 router.put("/usuarios/recoverpass", resetPassword);
 router.get("/productos", getProductos);
+router.get("/productos/:id", getProductoById);
 router.post("/productos/create", check.auth, createProducto);
 router.put("/productos/edit", check.auth, putProductos);
 router.delete("/productos/delete", check.auth, deleteProducto);

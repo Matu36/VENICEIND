@@ -7,6 +7,8 @@ import { AuthProvider } from "../context/AuthProvider";
 import Productos from "../components/Admin/Productos";
 import Usuarios from "../components/Admin/Usuarios";
 import useAuth from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const AppRouter = () => {
   return (
@@ -22,6 +24,15 @@ const AppRouter = () => {
 };
 
 const AdminLayout = () => {
+  const { auth } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (auth.rol !== false) {
+      navigate("/");
+    }
+  }, [auth, navigate]);
+
   return (
     <>
       <NavBarAdmin />

@@ -41,6 +41,36 @@ const getProductos = async (req, res) => {
   }
 };
 
+const getProductoById = async (req, res) => {
+  try {
+    const { id } = req.params; // Obtener el ID del parámetro de la URL
+    const producto = await Productos.findByPk(id); // Buscar el producto por su ID
+
+    // Verificar si se encontró el producto
+    if (!producto) {
+      return res.status(404).send("Producto no encontrado");
+    }
+
+    // Devolver el producto encontrado
+    return res.send({
+      id: producto.id,
+      nombre: producto.nombre,
+      marca: producto.marca,
+      imagen: producto.imagen,
+      imagen1: producto.imagen1,
+      imagen2: producto.imagen2,
+      imagen3: producto.imagen3,
+      precio: producto.precio,
+      codigo: producto.codigo,
+      talle: producto.talle,
+      cantidadTotal: producto.cantidadTotal,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Error interno del servidor");
+  }
+};
+
 const putProductos = async (req, res) => {
   try {
     const { id, ...updatedFields } = req.body;
@@ -125,4 +155,5 @@ module.exports = {
   putProductos,
   createProducto,
   deleteProducto,
+  getProductoById,
 };
