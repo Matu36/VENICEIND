@@ -10,7 +10,7 @@ const Card = ({
   precio,
   imagen,
   Cantidad,
-  imagen2,
+  imagen1,
   codigo,
   actualizarContadorCarrito,
 }) => {
@@ -33,7 +33,7 @@ const Card = ({
   };
 
   const handleMouseOver = () => {
-    setCurrentImage(imagen2);
+    setCurrentImage(imagen1);
   };
 
   const handleMouseOut = () => {
@@ -41,7 +41,7 @@ const Card = ({
   };
 
   const handleTouchStart = () => {
-    setCurrentImage(imagen2);
+    setCurrentImage(imagen1);
   };
 
   const handleTouchEnd = () => {
@@ -89,7 +89,7 @@ const Card = ({
               talle={talle}
               precio={precio}
               imagen={imagen}
-              imagen2={imagen2}
+              imagen1={imagen1}
               cantidad={Cantidad}
               onClose={closeModal}
             />

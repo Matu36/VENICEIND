@@ -1789,6 +1789,23 @@ button:focus-visible {
 
 /* PANEL DE ADMIN */
 
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 15%; /* Ancho de la barra lateral */
+  background-color: #0052cc;
+  color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  flex: 1; /* El contenido ocupará todo el espacio restante */
+  padding: 20px;
+}
+
+
 /* NAVBAR */
 
 .navbarAdmin {
@@ -1842,14 +1859,11 @@ button:focus-visible {
 
 .sidebarAdmin {
   display: block;
-  width: 200px;
+ 
   background-color: #0052cc;
   color: white;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  position: absolute;
-  top: 1;
-  left: 1;
-  height: 100%;
+  
 }
 
 .sidebarAdmin__header {
@@ -1937,32 +1951,34 @@ button:focus-visible {
 }
 
 .productos {
-  width: 80%;
-  float: right;
+ 
+ 
   margin-top: 30px;
 }
 
 /* Estilo general del contenedor */
 .calendar-container {
-  display: flex;
+display: flex;
+justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin-top: 5rem;
+  margin-top: 1rem;
   border-radius: 5%;
-  max-width: 50%;
+  max-width: 55%;
   border: 3px solid gray;
-
-
+  margin: auto;
   
+
 }
 
 /* Estilo del calendario */
 .react-calendar {
-  width: 600px; /* Ancho del calendario */
+  width: 50%; /* Ancho del calendario */
   
   border: 1px solid #ccc; /* Borde del calendario */
   border-radius: 8px; /* Borde redondeado */
   color: #000;
+  
 }
 
 /* Estilo de los eventos */
@@ -1975,10 +1991,12 @@ button:focus-visible {
 /* Estilo del formulario de agregar evento */
 .add-event-form {
   margin-top: 20px; /* Margen superior del formulario */
+  
 }
 
 .addEventForm {
   border-width: 1px;
   border-radius: 2px;
   color: #000;
+  
 }

@@ -39,13 +39,19 @@ const AdminLayout = () => {
   return (
     <>
       <NavBarAdmin />
-      <SideBarAdmin />
-      <Routes>
-        <Route path="/home" element={<AppAdmin />} />
-        <Route path="/Productos" element={<Productos />} />
-        <Route path="/Usuarios" element={<Usuarios />} />
-        <Route path="/Calendario" element={<Calendario />} />
-      </Routes>
+      <div className="container">
+        <div className="sidebar">
+          <SideBarAdmin />
+        </div>
+        <div className="content">
+          <Routes>
+            <Route path="/home" element={<AppAdmin />} />
+            <Route path="/Productos" element={<Productos />} />
+            <Route path="/Usuarios" element={<Usuarios />} />
+            <Route path="/Calendario" element={<Calendario />} />
+          </Routes>
+        </div>
+      </div>
     </>
   );
 };

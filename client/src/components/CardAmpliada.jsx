@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function CardAmpliada({
   imagen,
-  imagen2,
+  imagen1,
   precio,
   talle,
   onClose,
@@ -10,7 +10,7 @@ export default function CardAmpliada({
   const [currentImage, setCurrentImage] = useState(imagen);
 
   const handleMouseOver = () => {
-    setCurrentImage(imagen2);
+    setCurrentImage(imagen1);
   };
 
   const handleMouseOut = () => {
@@ -18,7 +18,7 @@ export default function CardAmpliada({
   };
 
   const handleTouchStart = () => {
-    setCurrentImage(imagen2);
+    setCurrentImage(imagen1);
   };
 
   const handleTouchEnd = () => {
