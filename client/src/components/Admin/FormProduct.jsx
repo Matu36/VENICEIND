@@ -21,7 +21,7 @@ export default function FormProduct() {
     });
 
     const file = await res.json();
-    console.log(res);
+
     setImage(file.secure_url);
     setLoading(false);
     setProducto({
@@ -40,6 +40,8 @@ export default function FormProduct() {
     marca: "",
     imagen: "",
     imagen1: "",
+    imagen2: "",
+    imagen3: "",
     cantidadTotal: "",
     precio: "",
     codigo: "",

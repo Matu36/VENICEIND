@@ -9,11 +9,12 @@ const Card = ({
   talle,
   precio,
   imagen,
-  Cantidad,
+  cantidadTotal,
   imagen1,
   codigo,
   actualizarContadorCarrito,
 }) => {
+  console.log(imagen);
   const [showAlert, setShowAlert] = useState(false);
   const [currentImage, setCurrentImage] = useState(imagen);
   const [showModal, setShowModal] = useState(false);
@@ -90,7 +91,7 @@ const Card = ({
               precio={precio}
               imagen={imagen}
               imagen1={imagen1}
-              cantidad={Cantidad}
+              cantidadTotal={cantidadTotal}
               onClose={closeModal}
             />
           </div>
@@ -114,7 +115,7 @@ const Card = ({
         </p>
         <button onClick={handleDetalleClick}>Ver detalle</button>
 
-        {Cantidad === 0 && (
+        {cantidadTotal === 0 && (
           <div className="soldOut-container">
             {" "}
             <span className="soldOut">SIN STOCK</span>
@@ -125,9 +126,9 @@ const Card = ({
       <br />
       <div>
         <button
-          className={`comprar ${Cantidad === 0 ? "sin-stock" : "comprar"}`}
+          className={`comprar ${cantidadTotal === 0 ? "sin-stock" : "comprar"}`}
           onClick={handleComprarClick}
-          disabled={Cantidad === 0}
+          disabled={cantidadTotal === 0}
         >
           Añadir al Carrito
         </button>
