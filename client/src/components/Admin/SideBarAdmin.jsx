@@ -15,7 +15,6 @@ const SideBarAdmin = () => {
     { label: "Productos", icon: MdShoppingBasket },
     { label: "Usuarios", icon: MdPerson },
     { label: "Ventas", icon: MdAttachMoney },
-    { label: "Mensajes", icon: MdMail },
     { label: "Calendario", icon: MdOutlineEditCalendar },
   ];
 

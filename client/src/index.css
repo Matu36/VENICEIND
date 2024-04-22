@@ -1941,3 +1941,44 @@ button:focus-visible {
   float: right;
   margin-top: 30px;
 }
+
+/* Estilo general del contenedor */
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+  border-radius: 5%;
+  max-width: 50%;
+  border: 3px solid gray;
+
+
+  
+}
+
+/* Estilo del calendario */
+.react-calendar {
+  width: 600px; /* Ancho del calendario */
+  
+  border: 1px solid #ccc; /* Borde del calendario */
+  border-radius: 8px; /* Borde redondeado */
+  color: #000;
+}
+
+/* Estilo de los eventos */
+.react-calendar__event {
+  background-color: #007bff; /* Color de fondo del evento */
+  color: black;
+  border-radius: 4px; /* Borde redondeado del evento */
+}
+
+/* Estilo del formulario de agregar evento */
+.add-event-form {
+  margin-top: 20px; /* Margen superior del formulario */
+}
+
+.addEventForm {
+  border-width: 1px;
+  border-radius: 2px;
+  color: #000;
+}

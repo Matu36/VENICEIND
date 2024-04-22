@@ -10,6 +10,7 @@ import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Detalle from "../components/Detalle";
+import Calendario from "../components/Admin/Calendario";
 
 const AppRouter = () => {
   return (
@@ -43,6 +44,7 @@ const AdminLayout = () => {
         <Route path="/home" element={<AppAdmin />} />
         <Route path="/Productos" element={<Productos />} />
         <Route path="/Usuarios" element={<Usuarios />} />
+        <Route path="/Calendario" element={<Calendario />} />
       </Routes>
     </>
   );
