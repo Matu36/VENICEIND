@@ -25,7 +25,7 @@ export default function FormProduct() {
         method: "POST",
         body: data,
       });
-      console.log(res);
+
       const imageData = await res.json();
       uploadedImages.push(imageData.secure_url);
     }
@@ -63,7 +63,7 @@ export default function FormProduct() {
     codigo: "",
     talle: "",
   });
-  console.log(producto);
+
   const saveProduct = async (e) => {
     e.preventDefault();
 

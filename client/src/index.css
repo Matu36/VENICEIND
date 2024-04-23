@@ -2006,3 +2006,8 @@ width: 30px;
 height: 30px;
 border-radius: 50%;
 }
+
+.CarrouselImg {
+  width: 500px;
+  height: 500px;
+}

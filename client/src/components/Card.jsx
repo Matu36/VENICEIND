@@ -14,7 +14,6 @@ const Card = ({
   codigo,
   actualizarContadorCarrito,
 }) => {
-  console.log(imagen);
   const [showAlert, setShowAlert] = useState(false);
   const [currentImage, setCurrentImage] = useState(imagen);
   const [showModal, setShowModal] = useState(false);
@@ -107,7 +106,7 @@ const Card = ({
       <div className="card-content">
         <p>{marca ? marca : null} </p>
         <p>{nombre ? nombre : null} </p>
-        {Array.isArray(talle) && <p>Talle: {talle.join(", ")}</p>}
+        <p>Talle: {talle}</p>
 
         <p>Precio: $ {precio}</p>
         <p style={{ color: "grey", fontSize: "10px", marginTop: "10px" }}>
