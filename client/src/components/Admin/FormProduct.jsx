@@ -6,31 +6,47 @@ const Clouddinary = import.meta.env.VITE_CLOUDINARY_URL;
 export default function FormProduct() {
   //CLOUDDINARY//
 
-  const [image, setImage] = useState("");
+  const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const uploadImage = async (e) => {
+  const uploadImage = async (e, imageNumber) => {
     const files = e.target.files;
-    const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "Images"); //VENICE es el folder que cree en cDinary
+
     setLoading(true);
-    const res = await fetch(Clouddinary, {
-      method: "POST",
-      body: data,
-    });
 
-    const file = await res.json();
+    const uploadedImages = [];
 
-    setImage(file.secure_url);
+    for (const file of files) {
+      const data = new FormData();
+      data.append("file", file);
+      data.append("upload_preset", "Images");
+
+      const res = await fetch(Clouddinary, {
+        method: "POST",
+        body: data,
+      });
+      console.log(res);
+      const imageData = await res.json();
+      uploadedImages.push(imageData.secure_url);
+    }
+
     setLoading(false);
-    setProducto({
-      ...producto,
-      imagen: file.secure_url,
-      imagen1: file.secure_url,
-      imagen2: file.secure_url,
-      imagen3: file.secure_url,
-    });
+    switch (imageNumber) {
+      case 0:
+        setProducto({ ...producto, imagen: uploadedImages[0] });
+        break;
+      case 1:
+        setProducto({ ...producto, imagen1: uploadedImages[0] });
+        break;
+      case 2:
+        setProducto({ ...producto, imagen2: uploadedImages[0] });
+        break;
+      case 3:
+        setProducto({ ...producto, imagen3: uploadedImages[0] });
+        break;
+      default:
+        break;
+    }
   };
 
   //CLOUDDINARY//
@@ -47,7 +63,7 @@ export default function FormProduct() {
     codigo: "",
     talle: "",
   });
-
+  console.log(producto);
   const saveProduct = async (e) => {
     e.preventDefault();
 
@@ -190,7 +206,7 @@ export default function FormProduct() {
               id="imagen"
               name="file"
               accept="image/png, image/jpeg, image/jpg"
-              onChange={uploadImage}
+              onChange={(e) => uploadImage(e, 0)}
             />
           </div>
           <div>
@@ -200,7 +216,7 @@ export default function FormProduct() {
               id="imagen1"
               name="file"
               accept="image/png, image/jpeg, image/jpg"
-              onChange={uploadImage}
+              onChange={(e) => uploadImage(e, 1)}
             />
           </div>
           <div>
@@ -210,7 +226,7 @@ export default function FormProduct() {
               id="imagen2"
               name="file"
               accept="image/png, image/jpeg, image/jpg"
-              onChange={uploadImage}
+              onChange={(e) => uploadImage(e, 2)}
             />
           </div>
           <div>
@@ -220,7 +236,7 @@ export default function FormProduct() {
               id="imagen3"
               name="file"
               accept="image/png, image/jpeg, image/jpg"
-              onChange={uploadImage}
+              onChange={(e) => uploadImage(e, 3)}
             />
           </div>
 
