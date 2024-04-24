@@ -6,7 +6,7 @@ const jwt = require("../services/jwt.js");
 const registro = async (req, res) => {
   try {
     if (!req.body?.email || !req.body?.password)
-      throw { status: 43, message: "Missing email or password" };
+      throw "Missing email or password";
 
     //Validación para ver si el email ya esta registrado
 
@@ -56,7 +56,7 @@ const registro = async (req, res) => {
 const login = async (req, res) => {
   try {
     if (!req.body?.email || !req.body?.password)
-      throw "Missing email or password";
+      throw { status: 43, message: "Missing email or password" };
 
     // Verificar si la contraseña proporcionada es un hash o una contraseña en texto plano
     const isPasswordHash = req.body.password.length === 60;

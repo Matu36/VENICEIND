@@ -56,7 +56,7 @@ export default function Login({ handleCerrarModalLogin }) {
       localStorage.setItem("user", JSON.stringify(data.loggedUser));
       setSaved("login");
       setShowWelcomeMessage(true);
-    } else if (request.status === 403) {
+    } else if (data.status === "403 Forbidden") {
       // Mostrar mensaje de error específico para código 403
       setErrorMessage(
         "Las credenciales son incorrectas. Por favor, verifícalas e inténtalo de nuevo."
