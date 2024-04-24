@@ -4,7 +4,7 @@ export default function WidgetLg() {
   const [cargos, setCargos] = useState([]);
 
   return (
-    <div>
+    <div className="userListContainer">
       <span>Últimas ventas realizadas</span>
       <table>
         <thead>

@@ -275,21 +275,8 @@ export default function Productos() {
         <button onClick={handleMostrarFormulario}>Agregar Producto</button>
 
         {mostrarFormulario && (
-          <div
-            style={{
-              position: "fixed",
-              top: "45%",
-              left: "45%",
-              transform: "translate(-50%, -50%)",
-              backgroundColor: "black",
-              padding: "10px",
-              zIndex: "999",
-            }}
-          >
-            <button fontSize="2rem" onClick={handleCerrarFormulario}>
-              x
-            </button>
-            <FormProduct />
+          <div>
+            <FormProduct handleCerrarFormulario={handleCerrarFormulario} />
           </div>
         )}
         <DataTable columns={columns} data={productos} pagination striped />

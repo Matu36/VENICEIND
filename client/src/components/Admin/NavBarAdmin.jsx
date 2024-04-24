@@ -1,13 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { FaUser, FaBell } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import logo from "../../assets/img/logos/LOGO 1.jpeg";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 export default function NavBarAdmin() {
+  const navigate = useNavigate();
+  const { auth, setAuth } = useAuth();
+
+  const handleButtonClick = () => {
+    navigate("/");
+  };
+
   return (
     <nav className="navbarAdmin">
       <div className="sidebarAdmin__header">
-        <img src={logo} alt="chef" className="sidebarAdmin__image" />
+        <button onClick={handleButtonClick} className="topadmin__button">
+          <img
+            src="https://res.cloudinary.com/dmfzplfra/image/upload/v1711678602/VENICE/LOGO_1-removebg-preview_j1tfcu.png"
+            alt="chef"
+            className="sidebarAdmin__image"
+          />
+        </button>
       </div>
 
       <div className="navbarAdmin__left">
@@ -19,6 +32,10 @@ export default function NavBarAdmin() {
           <button className="navbarAdmin__icon-button">
             <FaUser className="navbarAdmin__icon" />
           </button>
+          <div>
+            <span>{auth.nombre}</span>
+            <span>{auth.apellido}</span>
+          </div>
           <button
             className="navbarAdmin__icon-button"
             // onClick={() => {

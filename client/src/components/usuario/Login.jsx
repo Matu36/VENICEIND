@@ -50,13 +50,15 @@ export default function Login({ handleCerrarModalLogin }) {
 
     const data = await request.json();
 
+    console.log(data);
+
     if (data.status == "success") {
       //Persistir los datos en el LocalStorage
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.loggedUser));
       setSaved("login");
       setShowWelcomeMessage(true);
-    } else if (data.status === "403 Forbidden") {
+    } else if (data.status === 43) {
       // Mostrar mensaje de error específico para código 403
       setErrorMessage(
         "Las credenciales son incorrectas. Por favor, verifícalas e inténtalo de nuevo."

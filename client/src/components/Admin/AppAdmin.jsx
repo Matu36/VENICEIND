@@ -8,14 +8,17 @@ export default function AppAdmin({ allUsers }) {
   return (
     <div>
       <FeaturedInfo />
-      <Chart
-        data={allUsers}
-        title="Analítica de Usuarios"
-        grid
-        dataKey="Active User"
-      />
-      <WidgetLg />
-      <WidgetSm />
+
+      <h3 style={{ color: "black" }}>Análitica de Usuarios</h3>
+      <Chart data={allUsers} grid dataKey="Active User" />
+      <div className="widgetsContainer">
+        <div className="widgetLeft">
+          <WidgetSm />
+        </div>
+        <div className="widgetRight">
+          <WidgetLg />
+        </div>
+      </div>
     </div>
   );
 }
