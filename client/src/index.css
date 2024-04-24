@@ -1587,7 +1587,8 @@ button:focus-visible {
 }
 
 .login-form input[type="email"],
-.login-form input[type="text"] {
+.login-form input[type="text"],
+.login-form input[type="password"] {
   width: calc(100% - 16px);
   padding: 8px;
   border: 1px solid #ccc;

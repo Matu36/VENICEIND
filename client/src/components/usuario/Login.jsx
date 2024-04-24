@@ -50,8 +50,6 @@ export default function Login({ handleCerrarModalLogin }) {
 
     const data = await request.json();
 
-    console.log(data);
-
     if (data.status == "success") {
       //Persistir los datos en el LocalStorage
       localStorage.setItem("token", data.token);
@@ -67,7 +65,7 @@ export default function Login({ handleCerrarModalLogin }) {
     } else {
       // Otros códigos de error no manejados
       setErrorMessage(
-        "Ha ocurrido un error. Por favor, inténtalo de nuevo más tarde."
+        "Las credenciales son incorrectas. Por favor, verifícalas e inténtalo de nuevo."
       );
       setSaved("error");
     }
@@ -100,22 +98,17 @@ export default function Login({ handleCerrarModalLogin }) {
             </div>
             <div className="form-group">
               <label htmlFor="contraseña">Contraseña</label>
-              <input type="text" name="password" onChange={changed} />
+              <input type="password" name="password" onChange={changed} />
             </div>
 
             <span>{saved == "error" ? "Error al registrarse" : null}</span>
             {saved === "error" && (
               <strong style={{ color: "red" }}>{errorMessage}</strong>
             )}
+
             <button onClick={handleMostrarModalRecover}>
               <span style={{ color: "blue" }}>¿Olvidaste tu contraeña?</span>
             </button>
-
-            <strong style={{ color: "grey" }}>
-              {saved === "error"
-                ? "El usuario no pertenece a Comunidad Venice"
-                : null}
-            </strong>
 
             <input type="submit" value="Ingresar" className="btn btn-success" />
           </form>
