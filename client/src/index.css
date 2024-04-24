@@ -1891,7 +1891,7 @@ button:focus-visible {
 .sidebarAdmin__image {
   width: 150px;
   height: 100px;
-  border-radius: 50%;
+  
   display: block;
 }
 
@@ -2109,6 +2109,7 @@ button:focus-visible {
   border-radius: 5px;
   box-sizing: border-box;
   height: 40px;
+  color: grey;
 }
 
 .FormProducto button[type="submit"] {
