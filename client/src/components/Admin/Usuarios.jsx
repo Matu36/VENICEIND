@@ -68,11 +68,14 @@ export default function Usuarios() {
   ];
 
   return (
-    <div>
+    <div className="productos">
       {auth && auth.rol !== null ? (
         <>
           <div className="productos">
-            <div className="input-group mb-3 inputSearch">
+            <div
+              className="input-group mb-3 inputSearch"
+              style={{ maxWidth: "40%" }}
+            >
               <input
                 type="text"
                 className="form-control"
