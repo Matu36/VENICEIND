@@ -83,7 +83,7 @@ const login = async (req, res) => {
         !requestUser ||
         !(await bcrypt.compare(req.body.password, requestUser.password))
       ) {
-        return res.status(403).send("Wrong email or password");
+        res.status(403).send({ error: "Wrong email or password" });
       }
     }
 

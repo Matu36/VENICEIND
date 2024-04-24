@@ -11,7 +11,6 @@ import {
 
 const SideBarAdmin = () => {
   const categories = [
-    { label: "Home", icon: FaHome },
     { label: "Productos", icon: MdShoppingBasket },
     { label: "Usuarios", icon: MdPerson },
     { label: "Ventas", icon: MdAttachMoney },
@@ -23,12 +22,24 @@ const SideBarAdmin = () => {
   return (
     <div className="sidebarAdmin">
       <div className="sidebarAdmin__content">
+        <Link
+          to="/admin"
+          className={`sidebarAdmin__button ${
+            location.pathname === "/admin" ? "active" : ""
+          }`}
+        >
+          <FaHome className="icon" />
+          Inicio
+        </Link>
+
         {categories.map((category) => (
           <Link
             key={category.label}
             to={`/admin/${category.label.toLowerCase()}`}
             className={`sidebarAdmin__button ${
-              activeCategory.label === category.label ? "active" : ""
+              location.pathname === `/admin/${category.label.toLowerCase()}`
+                ? "active"
+                : ""
             }`}
             onClick={() => setActiveCategory(category)}
           >

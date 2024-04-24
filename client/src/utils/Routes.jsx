@@ -45,7 +45,7 @@ const AdminLayout = () => {
         </div>
         <div className="content">
           <Routes>
-            <Route path="/home" element={<AppAdmin />} />
+            <Route index element={<AppAdmin />} />
             <Route path="/Productos" element={<Productos />} />
             <Route path="/Usuarios" element={<Usuarios />} />
             <Route path="/Calendario" element={<Calendario />} />

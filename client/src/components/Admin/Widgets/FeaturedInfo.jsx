@@ -4,29 +4,27 @@ export default function FeaturedInfo() {
   const [cargos, setCargos] = useState([]);
 
   return (
-    <div>
-      <div>
+    <div className="featuredInfo">
+      <div className="infoBlock">
         <span>Ganancias</span>
         <div>
-          <span>{/* Aquí deberías incluir el valor de las ganancias */}</span>
+          <span>$500</span> {/* Ejemplo de valor de ganancias */}
         </div>
         <span>Ganancias totales</span>
       </div>
 
-      <div>
+      <div className="infoBlock">
         <span>Ventas</span>
         <div>
-          <span>{/* Aquí deberías incluir el valor de las ventas */}$</span>
+          <span>$1000</span> {/* Ejemplo de valor de ventas */}
         </div>
         <span>Ventas totales</span>
       </div>
 
-      <div>
+      <div className="infoBlock">
         <span>Costos</span>
         <div>
-          <span>{/* Aquí deberías incluir el valor de los costos */}$</span>
-          {/* Condición opcional */}
-          {/* {totalCostos < totalAmount && <span>Costos son menores que las ganancias</span>} */}
+          <span>$300</span> {/* Ejemplo de valor de costos */}
         </div>
         <span>Costos totales</span>
       </div>

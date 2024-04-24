@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 const Clouddinary = import.meta.env.VITE_CLOUDINARY_URL;
 
-export default function FormProduct() {
+export default function FormProduct({ handleCerrarFormulario }) {
   //CLOUDDINARY//
 
   const [images, setImages] = useState([]);
@@ -121,148 +121,149 @@ export default function FormProduct() {
   //FIN EDITAR COSTOS
 
   return (
-    <div>
+    <div className="FormProducto">
+      <div className="formCerrarProducto">
+        <button onClick={handleCerrarFormulario}>x</button>
+      </div>
       <form onSubmit={saveProduct}>
         <div>
-          <div>
-            <label style={{ color: "black" }} htmlFor="marca">
-              Marca
-            </label>
-            <input
-              type="text"
-              id="marca"
-              name="marca"
-              value={producto.marca}
-              autoComplete="off"
-              placeholder="Marca"
-              onChange={(e) =>
-                setProducto({ ...producto, marca: e.target.value })
-              }
-            />
-          </div>
+          <label style={{ color: "black" }} htmlFor="marca">
+            Marca
+          </label>
+          <input
+            type="text"
+            id="marca"
+            name="marca"
+            value={producto.marca}
+            autoComplete="off"
+            placeholder="Marca"
+            onChange={(e) =>
+              setProducto({ ...producto, marca: e.target.value })
+            }
+          />
+        </div>
 
-          <div>
-            <label htmlFor="precio">Precio</label>
-            {/* <select */}
-            <input
-              id="precio"
-              name="precio"
-              type="number"
-              value={producto.precio}
-              onChange={(e) =>
-                setProducto({
-                  ...producto,
-                  precio: parseInt(e.target.value) || "",
-                })
-              }
-              placeholder="Precio"
-            />
-            {/* {categorias.map((categoria) => (
+        <div>
+          <label htmlFor="precio">Precio</label>
+          {/* <select */}
+          <input
+            id="precio"
+            name="precio"
+            type="number"
+            value={producto.precio}
+            onChange={(e) =>
+              setProducto({
+                ...producto,
+                precio: parseInt(e.target.value) || "",
+              })
+            }
+            placeholder="Precio"
+          />
+          {/* {categorias.map((categoria) => (
           <option key={categoria} value={categoria}>
             {categoria}
           </option>
         ))}
       </select> */}
-          </div>
+        </div>
 
+        <div>
+          <label htmlFor="codigo">Código</label>
           <div>
-            <label htmlFor="codigo">Código</label>
-            <div>
-              <input
-                type="text"
-                id="codigo"
-                name="codigo"
-                value={producto.codigo}
-                autoComplete="off"
-                placeholder="Código"
-                onChange={(e) =>
-                  setProducto({ ...producto, codigo: e.target.value })
-                }
-              />
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="talle">Talle</label>
-            <div>
-              <input
-                type="text"
-                id="talle"
-                name="talle"
-                value={producto.talle}
-                autoComplete="off"
-                placeholder="Talle"
-                onChange={(e) =>
-                  setProducto({ ...producto, talle: e.target.value })
-                }
-              />
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="imagen">Imagen</label>
             <input
-              type="file"
-              id="imagen"
-              name="file"
-              accept="image/png, image/jpeg, image/jpg"
-              onChange={(e) => uploadImage(e, 0)}
+              type="text"
+              id="codigo"
+              name="codigo"
+              value={producto.codigo}
+              autoComplete="off"
+              placeholder="Código"
+              onChange={(e) =>
+                setProducto({ ...producto, codigo: e.target.value })
+              }
             />
           </div>
-          <div>
-            <label htmlFor="imagen">Imagen 1</label>
-            <input
-              type="file"
-              id="imagen1"
-              name="file"
-              accept="image/png, image/jpeg, image/jpg"
-              onChange={(e) => uploadImage(e, 1)}
-            />
-          </div>
-          <div>
-            <label htmlFor="imagen">Imagen 2</label>
-            <input
-              type="file"
-              id="imagen2"
-              name="file"
-              accept="image/png, image/jpeg, image/jpg"
-              onChange={(e) => uploadImage(e, 2)}
-            />
-          </div>
-          <div>
-            <label htmlFor="imagen">Imagen 3</label>
-            <input
-              type="file"
-              id="imagen3"
-              name="file"
-              accept="image/png, image/jpeg, image/jpg"
-              onChange={(e) => uploadImage(e, 3)}
-            />
-          </div>
+        </div>
 
+        <div>
+          <label htmlFor="talle">Talle</label>
           <div>
-            <label htmlFor="cantidadTotal">Cantidad Toal</label>
-            <div>
-              <input
-                type="number"
-                id="cantidadTotal"
-                name="cantidadTotal"
-                value={producto.cantidadTotal}
-                autoComplete="off"
-                placeholder="Cantidad Total"
-                onChange={(e) =>
-                  setProducto({
-                    ...producto,
-                    cantidadTotal: parseInt(e.target.value) || "",
-                  })
-                }
-              />
-            </div>
+            <input
+              type="text"
+              id="talle"
+              name="talle"
+              value={producto.talle}
+              autoComplete="off"
+              placeholder="Talle"
+              onChange={(e) =>
+                setProducto({ ...producto, talle: e.target.value })
+              }
+            />
           </div>
+        </div>
 
+        <div>
+          <label htmlFor="imagen">Imagen</label>
+          <input
+            type="file"
+            id="imagen"
+            name="file"
+            accept="image/png, image/jpeg, image/jpg"
+            onChange={(e) => uploadImage(e, 0)}
+          />
+        </div>
+        <div>
+          <label htmlFor="imagen">Imagen 1</label>
+          <input
+            type="file"
+            id="imagen1"
+            name="file"
+            accept="image/png, image/jpeg, image/jpg"
+            onChange={(e) => uploadImage(e, 1)}
+          />
+        </div>
+        <div>
+          <label htmlFor="imagen">Imagen 2</label>
+          <input
+            type="file"
+            id="imagen2"
+            name="file"
+            accept="image/png, image/jpeg, image/jpg"
+            onChange={(e) => uploadImage(e, 2)}
+          />
+        </div>
+        <div>
+          <label htmlFor="imagen">Imagen 3</label>
+          <input
+            type="file"
+            id="imagen3"
+            name="file"
+            accept="image/png, image/jpeg, image/jpg"
+            onChange={(e) => uploadImage(e, 3)}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="cantidadTotal">Cantidad Toal</label>
           <div>
-            <button type="submit">Agregar Producto</button>
+            <input
+              type="number"
+              id="cantidadTotal"
+              name="cantidadTotal"
+              value={producto.cantidadTotal}
+              autoComplete="off"
+              placeholder="Cantidad Total"
+              onChange={(e) =>
+                setProducto({
+                  ...producto,
+                  cantidadTotal: parseInt(e.target.value) || "",
+                })
+              }
+            />
           </div>
+        </div>
+
+        <div className="agregarProducto">
+          <button type="submit">Agregar Producto</button>
         </div>
       </form>
     </div>

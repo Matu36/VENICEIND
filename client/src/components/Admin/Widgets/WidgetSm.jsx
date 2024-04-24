@@ -18,18 +18,18 @@ const lastUsers = data.lastLoggedInUsers;
 
 export default function WidgetSm() {
   return (
-    <div>
+    <div className="userListContainer">
       <span>Últimos usuarios registrados</span>
       <table>
         {lastUsers.map((user) => (
-          <li key={user.id}>
-            <div>
+          <div key={user.id}>
+            <div className="userListItem">
               <img src={imgUsuarios} className="imgUsuario" />
               <div>
                 <span>{user.email}</span>
               </div>
             </div>
-          </li>
+          </div>
         ))}
       </table>
     </div>

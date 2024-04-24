@@ -1805,7 +1805,6 @@ button:focus-visible {
   padding: 20px;
 }
 
-
 /* NAVBAR */
 
 .navbarAdmin {
@@ -1838,12 +1837,18 @@ button:focus-visible {
 
 .navbarAdmin__icons {
   display: flex;
+  align-items: center;
 }
 
-.navbarAdmin__icon-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
+.navbarAdmin__icons > button,
+.navbarAdmin__icons > div {
+  margin-right: 10px; /* Añade espacio entre el botón y el contenedor de texto */
+  background: none;
+}
+
+.navbarAdmin__icons > div {
+  display: flex;
+  flex-direction: column; /* Establece la dirección del contenedor como columna */
 }
 
 .navbarAdmin__badge {
@@ -1855,15 +1860,20 @@ button:focus-visible {
   transform: translate(50%, -50%);
 }
 
+.topadmin__button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 /* SIDEBAR */
 
 .sidebarAdmin {
   display: block;
- 
+  height: 100vh;
   background-color: #0052cc;
   color: white;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  
 }
 
 .sidebarAdmin__header {
@@ -1878,8 +1888,7 @@ button:focus-visible {
 }
 
 .sidebarAdmin__image {
-  margin-left: 20px;
-  width: 100px;
+  width: 150px;
   height: 100px;
   border-radius: 50%;
   display: block;
@@ -1887,7 +1896,7 @@ button:focus-visible {
 
 .sidebarAdmin__content {
   overflow-y: auto;
-  margin-top: 80px; /* Ajusta según la altura del header */
+  margin-top: 20px; /* Ajusta según la altura del header */
   padding-top: 20px; /* Añade espacio superior para separar del header */
   align-items: center;
   width: 100%;
@@ -1950,64 +1959,248 @@ button:focus-visible {
   content: "\f133";
 }
 
-.productos {
- 
- 
-  margin-top: 30px;
-}
-
 /* Estilo general del contenedor */
 .calendar-container {
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 3rem;
   border-radius: 5%;
   max-width: 55%;
   border: 3px solid gray;
   margin: auto;
-  
-
 }
 
 /* Estilo del calendario */
 .react-calendar {
-  width: 50%; /* Ancho del calendario */
-  
-  border: 1px solid #ccc; /* Borde del calendario */
-  border-radius: 8px; /* Borde redondeado */
+  border: 1px solid #ccc;
+  border-radius: 8px;
   color: #000;
-  
-}
-
-/* Estilo de los eventos */
-.react-calendar__event {
-  background-color: #007bff; /* Color de fondo del evento */
-  color: black;
-  border-radius: 4px; /* Borde redondeado del evento */
-}
-
-/* Estilo del formulario de agregar evento */
-.add-event-form {
-  margin-top: 20px; /* Margen superior del formulario */
-  
 }
 
 .addEventForm {
-  border-width: 1px;
-  border-radius: 2px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.addEventForm form {
+  display: flex;
+  flex-direction: column;
+}
+
+.addEventForm div {
+  margin-bottom: 15px;
+}
+
+.addEventForm label {
+  font-weight: bold;
+  margin-bottom: 5px;
   color: #000;
-  
+}
+
+.addEventForm input[type="text"],
+.addEventForm input[type="datetime-local"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.addEventForm button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addEventForm button[type="submit"]:hover {
+  background-color: #0056b3;
 }
 
 .imgUsuario {
-width: 30px;
-height: 30px;
-border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }
 
 .CarrouselImg {
   width: 500px;
   height: 500px;
+}
+
+/* Productos */
+
+.productos input {
+  border-radius: 2%;
+  height: 10px;
+  padding: 10px;
+  width: 300px;
+  max-width: 100%;
+  margin-bottom: 2rem;
+}
+
+.productos button {
+  background-color: transparent;
+  border: none;
+  margin-bottom: 2rem;
+  float: left;
+  color: black;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  transition: all 0.3s ease;
+}
+
+.productos button:hover {
+  background-color: gainsboro;
+  color: #000;
+}
+
+.FormProducto {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  position: relative;
+  z-index: 999;
+}
+
+.FormProducto button.close-btn {
+  font-size: 2rem;
+  background-color: transparent;
+  border: none;
+  color: black;
+  cursor: pointer;
+}
+
+.formCerrarProducto {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.FormProducto label {
+  display: block;
+  margin-bottom: 5px;
+  color: black;
+}
+
+.FormProducto label[for="marca"] {
+  vertical-align: top;
+}
+
+.FormProducto input[type="text"],
+.FormProducto input[type="number"],
+.FormProducto input[type="file"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  height: 40px;
+}
+
+.FormProducto button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.agregarProducto {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.FormProducto button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.featuredInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.infoBlock {
+  width: calc(33.33% - 10px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.infoBlock:nth-child(1) {
+  background-color: #ffcccc; /* Color para el primer infoBlock */
+}
+
+.infoBlock:nth-child(2) {
+  background-color: #ccffcc; /* Color para el segundo infoBlock */
+}
+
+.infoBlock:nth-child(3) {
+  background-color: #ccccff; /* Color para el tercer infoBlock */
+}
+
+.widgetsContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.widgetLeft {
+  color: black;
+}
+
+.widgetRight {
+  color: #000;
+}
+
+.userListContainer {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-top: 2rem;
+}
+
+.userListContainer span {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-decoration: underline;
+}
+
+.userListItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.userListItem img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.userListItem div {
+  flex-grow: 1;
+}
+
+.userListItem span {
+  font-size: 16px;
 }
