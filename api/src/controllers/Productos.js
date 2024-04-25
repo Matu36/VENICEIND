@@ -11,6 +11,7 @@ const getProductos = async (req, res) => {
             ({
               id,
               nombre,
+              descripcion,
               marca,
               imagen,
               imagen1,
@@ -23,6 +24,7 @@ const getProductos = async (req, res) => {
             }) => ({
               id,
               nombre,
+              descripcion,
               marca,
               imagen,
               imagen1,
@@ -56,6 +58,7 @@ const getProductoById = async (req, res) => {
       id: producto.id,
       nombre: producto.nombre,
       marca: producto.marca,
+      descripcion: producto.descripcion,
       imagen: producto.imagen,
       imagen1: producto.imagen1,
       imagen2: producto.imagen2,

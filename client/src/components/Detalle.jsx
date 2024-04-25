@@ -42,13 +42,15 @@ export default function Detalle() {
 
   return (
     <Layout>
+      <div className="blue-bar">
+        <p>Prendas 100% ORIGINALES</p>
+      </div>
       <div className="DetalleCardContainer">
         {producto ? (
           <div className="DetalleCard">
-            <h2>{producto.nombre}</h2>
             <Carousel
               additionalTransfrom={0}
-              arrows
+              arrows={false}
               autoPlaySpeed={3000}
               centerMode={false}
               className=""
