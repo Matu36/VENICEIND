@@ -73,6 +73,11 @@ const Card = ({
     actualizarContadorCarrito();
   };
 
+  const talleLetras = talle
+    .split(",")
+    .map((item) => item.split(":")[0].trim())
+    .join(" - ");
+
   return (
     <div
       className="card"
@@ -106,13 +111,18 @@ const Card = ({
       <div className="card-content">
         <p>{marca ? marca : null} </p>
         <p>{nombre ? nombre : null} </p>
-        <p>Talle: {talle}</p>
+        <p>Talle: {talleLetras}</p>
 
         <p>Precio: $ {precio}</p>
         <p style={{ color: "grey", fontSize: "10px", marginTop: "10px" }}>
           Código: {codigo}
         </p>
-        <button onClick={handleDetalleClick}>Ver detalle</button>
+        <button
+          style={{ background: "none", color: "chocolate" }}
+          onClick={handleDetalleClick}
+        >
+          Ver detalle
+        </button>
 
         {cantidadTotal === 0 && (
           <div className="soldOut-container">

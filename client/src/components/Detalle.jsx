@@ -28,6 +28,10 @@ export default function Detalle() {
     }
   }, [id]);
 
+  // const talleLetras = producto.talle
+  //   ?.split(",")
+  //   .map((item) => item.split(":")[0].trim())
+  //   .join(" - ");
   return (
     <div className="DetalleCardContainer">
       {producto ? (
@@ -89,11 +93,10 @@ export default function Detalle() {
             <img src={producto.imagen3} className="CarrouselImg" alt="" />
           </Carousel>
 
-          <p>Marca: {producto.marca}</p>
-          <p>Precio: {producto.precio}</p>
+          <p>{producto.marca}</p>
+          <p>Precio: $ {producto.precio}</p>
           <p>Código: {producto.codigo}</p>
-          <p>Talle: {producto.talle}</p>
-          {/* Aquí puedes agregar más detalles del producto */}
+          <p>Talles: {producto.talle}</p>
         </div>
       ) : (
         <div>Cargando...</div>

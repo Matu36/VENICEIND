@@ -182,22 +182,6 @@ function App() {
     setSelectedMarca(null);
   };
 
-  const handleMostrarModalAbout = () => {
-    setModal(true);
-  };
-
-  const handleCerrarModalAbout = () => {
-    setModal(false);
-  };
-
-  const handleMostrarModalContact = () => {
-    setContact(true);
-  };
-
-  const handleCerrarModalContact = () => {
-    setContact(false);
-  };
-
   useEffect(() => {
     actualizarContadorCarrito();
   }, []);
@@ -356,30 +340,6 @@ function App() {
       <div className="camisasContainer">
         <img src={VENICEEXPERIENCE} alt="camisas" className="camisasImg" />
       </div>
-
-      <FooterAlternativo
-        handleMostrarModalContact={handleMostrarModalContact}
-        handleMostrarModalAbout={handleMostrarModalAbout}
-      />
-
-      {contact && (
-        <div className="modal">
-          {/* <div className="modal-content"> */}
-          <Contact handleCerrarModalContact={handleCerrarModalContact} />
-          {/* </div> */}
-        </div>
-      )}
-      {modal && (
-        <div className="modal">
-          {/* <div className="modal-content"> */}
-          <AboutUs handleCerrarModalAbout={handleCerrarModalAbout} />
-          {/* </div> */}
-        </div>
-      )}
-      <hr style={{ color: "grey", maxWidth: "100%" }} />
-      <span className="copy">
-        Copyright © 2024 | Venice Indumentaria Todos los derechos reservados
-      </span>
     </div>
   );
 }

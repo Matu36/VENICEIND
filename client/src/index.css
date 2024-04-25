@@ -2206,3 +2206,55 @@ button:focus-visible {
 .userListItem span {
   font-size: 16px;
 }
+
+.DetalleCardContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.DetalleCard {
+  max-width: 800px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px;
+}
+
+.DetalleCard h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.DetalleCard p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+/* Estilos para el carrusel */
+.container {
+  position: relative;
+}
+
+.container .carousel .slide {
+  margin-right: 10px;
+}
+
+.container .carousel .slide img {
+  border-radius: 10px;
+}
+
+.container .carousel .control-dots .dot {
+  background-color: #bbb;
+  border-radius: 50%;
+}
+
+.container .carousel .control-dots .dot.selected {
+  background-color: #333;
+}
+
