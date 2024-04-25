@@ -25,16 +25,16 @@ export default function NavBarAlternativo({ onSearchByMarca }) {
     }
   }, [setAuth]);
 
-  useEffect(() => {
-    actualizarContadorCarrito();
-  }, [modalCarrito]);
-
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
   const actualizarContadorCarrito = () => {
     const count = carrito.length;
     setCarritoC(count);
   };
+
+  useEffect(() => {
+    actualizarContadorCarrito();
+  }, [modalCarrito, carritoC]);
 
   const handleMostrarModalCarrito = () => {
     setModalCarrito(true);
@@ -61,10 +61,6 @@ export default function NavBarAlternativo({ onSearchByMarca }) {
   const handleCerrarModalEdit = () => {
     setEdit(false);
   };
-
-  useEffect(() => {
-    actualizarContadorCarrito();
-  }, []);
 
   const handleInputChange = (event) => {
     const value = event.target.value;
