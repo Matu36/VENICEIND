@@ -1,20 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import NavBar from "./components/Navbar";
-import Contact from "./components/Contact";
-import { camisas } from "../src/utils/Camisas";
 import Card from "./components/Card";
-import AboutUs from "./components/AboutUs";
-import CarritoModal from "./components/CarritoModal";
 import VENICEEXPERIENCE from "../src/assets/img/rubiofrase.png";
 import Filtros from "./components/Filtros";
-import FooterAlternativo from "./pages/FooterAlternativo";
 import { Slide, toast } from "react-toastify";
 import CargandoStock from "./components/CargandoStock";
 import Videos from "./components/Videos";
-import NavBarAlternativo from "../src/components/NavBarAlternativo";
-import Login from "./components/usuario/Login";
 import useAuth from "./hooks/useAuth";
-import EditarUsuario from "./components/usuario/EditarUsuario";
+import Layout from "./pages/Layout";
 
 const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}productos`, {
   method: "GET",
@@ -33,13 +26,9 @@ function App() {
   const [filtroPrecio, setFiltroPrecio] = useState();
   const [filtroPrecioTodos, setFiltroPrecioTodos] = useState("");
   const [filtroTalle, setFiltroTalle] = useState("");
-  const [modal, setModal] = useState(false);
-  const [modalCarrito, setModalCarrito] = useState(false);
   const [carritoC, setCarritoC] = useState(0);
-  const [contact, setContact] = useState(false);
   const cardsContainerRef = useRef(null);
   const { auth, setAuth } = useAuth();
-  const [edit, setEdit] = useState(false);
 
   useEffect(() => {
     const storedAuth = JSON.parse(localStorage.getItem("auth"));
@@ -47,8 +36,6 @@ function App() {
       setAuth(storedAuth);
     }
   }, [setAuth]);
-
-  const [login, setLogin] = useState(false);
 
   useEffect(() => {
     toast.info("Prendas 100% ORIGINALES", {
@@ -146,55 +133,9 @@ function App() {
     setCarritoC(count);
   };
 
-  const handleMostrarModalCarrito = () => {
-    setModalCarrito(true);
-    actualizarContadorCarrito();
-  };
-
-  const handleCerrarModalCarrito = () => {
-    setModalCarrito(false);
-    actualizarContadorCarrito();
-  };
-
-  const handleMostrarModalAbout = () => {
-    setModal(true);
-  };
-
-  const handleCerrarModalAbout = () => {
-    setModal(false);
-  };
-
-  const handleMostrarModalContact = () => {
-    setContact(true);
-  };
-
-  const handleCerrarModalContact = () => {
-    setContact(false);
-  };
-
-  const handleMostrarModalLogin = () => {
-    setLogin(true);
-  };
-
-  const handleCerrarModalLogin = () => {
-    setLogin(false);
-  };
-
-  const handleMostrarModalEdit = () => {
-    setEdit(true);
-  };
-
-  const handleCerrarModalEdit = () => {
-    setEdit(false);
-  };
-
   const handleInicioClick = () => {
     setSelectedMarca(null);
   };
-
-  useEffect(() => {
-    actualizarContadorCarrito();
-  }, []);
 
   const [showLoading, setShowLoading] = useState(true);
 
@@ -214,126 +155,84 @@ function App() {
   };
 
   return (
-    <div className="container">
-      {modalCarrito && (
+    <Layout onSearchByMarca={handleSearchByMarca}>
+      <div className="container">
+        {/* {showLoading && <CargandoStock onClose={closeLoading} />} */}
         <div>
-          <CarritoModal
-            handleCerrarModalCarrito={handleCerrarModalCarrito}
-            actualizarContadorCarrito={actualizarContadorCarrito}
-          />
+          <Videos />
         </div>
-      )}
 
-      {login && (
-        <div>
-          <Login
-            handleMostrarModalLogin={handleMostrarModalLogin}
-            handleCerrarModalLogin={handleCerrarModalLogin}
-          />
-        </div>
-      )}
-      {edit && (
-        <div>
-          <EditarUsuario
-            handleMostrarModalEdit={handleMostrarModalEdit}
-            handleCerrarModalEdit={handleCerrarModalEdit}
-          />
-        </div>
-      )}
-      <NavBarAlternativo
-        handleMostrarModalCarrito={handleMostrarModalCarrito}
-        carritoC={carritoC}
-        handleSearchByMarca={handleSearchByMarca}
-        handleMostrarModalLogin={handleMostrarModalLogin}
-        handleMostrarModalEdit={handleMostrarModalEdit}
-      />
-      {/* {showLoading && <CargandoStock onClose={closeLoading} />} */}
-      <div>
-        <Videos />
-      </div>
-
-      {!filteredCamisas.length > 0 && (
-        <div className="frasemarcas">
-          <h2>NUESTRAS MARCAS DESTACADAS</h2>
-        </div>
-      )}
-      {!filteredCamisas.length > 0 && (
-        <div className="filtrosTodos">
-          <h4>Filtrá por talle o precio</h4>
-          <select
-            value={filtroTalle}
-            onChange={(e) => setFiltroTalle(e.target.value)}
-          >
-            <option value="">Por Talle</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-          </select>
-          <select
-            value={filtroPrecioTodos}
-            onChange={(e) => setFiltroPrecioTodos(e.target.value)}
-          >
-            <option value="">Por Precio</option>
-            <option value="menorPrecio">Menor Precio</option>
-            <option value="mayorPrecio">Mayor Precio</option>
-          </select>
-          <button value="limpiarTodo" onClick={() => limpiarFiltros()}>
-            Omitir Filtros
-          </button>
-        </div>
-      )}
-      <div className="eleganzaContainer">
-        <div className="navBarDiv">
-          {!filteredCamisas.length > 0 && !talle.length > 0 && (
-            <h3 style={{ color: "black" }}>
-              <span>Seleccioná alguna de nuestras Marcas</span>
-            </h3>
-          )}
-          {!filteredCamisas.length > 0 && !talle.length > 0 && (
-            <NavBar
-              onSelectMarca={setSelectedMarca}
-              onInicio={handleInicioClick}
-            />
-          )}
-        </div>
-      </div>
-
-      <div>
-        {filteredCamisas.length > 0 && (
-          <div className="top-bar">
-            <div>
-              <Filtros
-                filtroPrecio={filtroPrecio}
-                setFiltroPrecio={setFiltroPrecio}
-                selectedMarca={selectedMarca}
-                setSelectedMarca={setSelectedMarca}
-              />
-            </div>
-
-            <div>
-              <h3>VENICE INDUMENTARIA</h3>
-            </div>
-            <div>
-              <button className="buttonclose" onClick={handleInicioClick}>
-                X
-              </button>
-            </div>
+        {!filteredCamisas.length > 0 && (
+          <div className="frasemarcas">
+            <h2>NUESTRAS MARCAS DESTACADAS</h2>
           </div>
         )}
-
-        <div ref={cardsContainerRef} className="cards-container" id="card">
-          {filteredCamisas.map((camisa) => (
-            <Card
-              id="cards"
-              key={camisa.id}
-              {...camisa}
-              actualizarContadorCarrito={actualizarContadorCarrito}
-            />
-          ))}
-        </div>
         {!filteredCamisas.length > 0 && (
-          <div className="cards-container" id="card">
-            {talle.map((camisa) => (
+          <div className="filtrosTodos">
+            <h4>Filtrá por talle o precio</h4>
+            <select
+              value={filtroTalle}
+              onChange={(e) => setFiltroTalle(e.target.value)}
+            >
+              <option value="">Por Talle</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+            <select
+              value={filtroPrecioTodos}
+              onChange={(e) => setFiltroPrecioTodos(e.target.value)}
+            >
+              <option value="">Por Precio</option>
+              <option value="menorPrecio">Menor Precio</option>
+              <option value="mayorPrecio">Mayor Precio</option>
+            </select>
+            <button value="limpiarTodo" onClick={() => limpiarFiltros()}>
+              Omitir Filtros
+            </button>
+          </div>
+        )}
+        <div className="eleganzaContainer">
+          <div className="navBarDiv">
+            {!filteredCamisas.length > 0 && !talle.length > 0 && (
+              <h3 style={{ color: "black" }}>
+                <span>Seleccioná alguna de nuestras Marcas</span>
+              </h3>
+            )}
+            {!filteredCamisas.length > 0 && !talle.length > 0 && (
+              <NavBar
+                onSelectMarca={setSelectedMarca}
+                onInicio={handleInicioClick}
+              />
+            )}
+          </div>
+        </div>
+
+        <div>
+          {filteredCamisas.length > 0 && (
+            <div className="top-bar">
+              <div>
+                <Filtros
+                  filtroPrecio={filtroPrecio}
+                  setFiltroPrecio={setFiltroPrecio}
+                  selectedMarca={selectedMarca}
+                  setSelectedMarca={setSelectedMarca}
+                />
+              </div>
+
+              <div>
+                <h3>VENICE INDUMENTARIA</h3>
+              </div>
+              <div>
+                <button className="buttonclose" onClick={handleInicioClick}>
+                  X
+                </button>
+              </div>
+            </div>
+          )}
+
+          <div ref={cardsContainerRef} className="cards-container" id="card">
+            {filteredCamisas.map((camisa) => (
               <Card
                 id="cards"
                 key={camisa.id}
@@ -342,38 +241,27 @@ function App() {
               />
             ))}
           </div>
-        )}
-      </div>
-
-      {/* <div className="frase">California dressing</div> */}
-
-      <div className="camisasContainer">
-        <img src={VENICEEXPERIENCE} alt="camisas" className="camisasImg" />
-      </div>
-      <FooterAlternativo
-        handleMostrarModalContact={handleMostrarModalContact}
-        handleMostrarModalAbout={handleMostrarModalAbout}
-      />
-
-      {contact && (
-        <div className="modal">
-          {/* <div className="modal-content"> */}
-          <Contact handleCerrarModalContact={handleCerrarModalContact} />
-          {/* </div> */}
+          {!filteredCamisas.length > 0 && (
+            <div className="cards-container" id="card">
+              {talle.map((camisa) => (
+                <Card
+                  id="cards"
+                  key={camisa.id}
+                  {...camisa}
+                  actualizarContadorCarrito={actualizarContadorCarrito}
+                />
+              ))}
+            </div>
+          )}
         </div>
-      )}
-      {modal && (
-        <div className="modal">
-          {/* <div className="modal-content"> */}
-          <AboutUs handleCerrarModalAbout={handleCerrarModalAbout} />
-          {/* </div> */}
+
+        {/* <div className="frase">California dressing</div> */}
+
+        <div className="camisasContainer">
+          <img src={VENICEEXPERIENCE} alt="camisas" className="camisasImg" />
         </div>
-      )}
-      <hr style={{ color: "grey", maxWidth: "100%" }} />
-      <span className="copy">
-        Copyright © 2024 | Venice Indumentaria Todos los derechos reservados
-      </span>
-    </div>
+      </div>
+    </Layout>
   );
 }
 export default App;
