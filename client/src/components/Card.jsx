@@ -85,9 +85,8 @@ const Card = ({
     carrito.push(productoComprado);
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
-
-    setShowAlert(true);
     actualizarContadorCarrito();
+    setShowAlert(true);
   };
 
   return (
