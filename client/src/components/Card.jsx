@@ -18,6 +18,16 @@ const Card = ({
   const [currentImage, setCurrentImage] = useState(imagen);
   const [showModal, setShowModal] = useState(false);
 
+  const [selectedTalles, setSelectedTalles] = useState([]);
+
+  const handleTalleChange = (talle) => {
+    if (selectedTalles.includes(talle)) {
+      setSelectedTalles(selectedTalles.filter((item) => item !== talle));
+    } else {
+      setSelectedTalles([...selectedTalles, talle]);
+    }
+  };
+
   const navigate = useNavigate();
 
   const handleDetalleClick = () => {
@@ -53,7 +63,7 @@ const Card = ({
       id,
       marca,
       nombre,
-      talle,
+      talle: selectedTalles.join(", "),
       precio,
       imagen,
       codigo,
@@ -72,11 +82,6 @@ const Card = ({
     }, 2000);
     actualizarContadorCarrito();
   };
-
-  const talleLetras = talle
-    .split(",")
-    .map((item) => item.split(":")[0].trim())
-    .join(" - ");
 
   return (
     <div
@@ -111,7 +116,24 @@ const Card = ({
       <div className="card-content">
         <p>{marca ? marca : null} </p>
         <p>{nombre ? nombre : null} </p>
-        <p>Talle: {talleLetras}</p>
+        <p>
+          Talles:
+          {talle
+            ?.split(",")
+            .map((item) => item.split(":")[0].trim())
+            .map((talle, index) => (
+              <label key={index}>
+                <input
+                  type="checkbox"
+                  value={talle}
+                  checked={selectedTalles.includes(talle)}
+                  onChange={() => handleTalleChange(talle)}
+                />
+                {talle}
+              </label>
+            ))}
+        </p>
+        <p> {selectedTalles.join(", ")}</p>
 
         <p>Precio: $ {precio}</p>
         <p style={{ color: "grey", fontSize: "10px", marginTop: "10px" }}>

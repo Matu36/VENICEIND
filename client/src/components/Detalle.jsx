@@ -17,7 +17,18 @@ export default function Detalle() {
           throw new Error("Error al obtener el producto");
         }
         const data = await response.json();
-        setProducto(data);
+
+        const tallesDisponibles = data.talle
+          .split(", ")
+          .map((item) => item.split(":"))
+          .filter(([talle, cantidad]) => parseInt(cantidad) > 0)
+          .map(([talle]) => talle);
+
+        const productoFiltrado = {
+          ...data,
+          talle: tallesDisponibles.join(", "),
+        };
+        setProducto(productoFiltrado);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -28,10 +39,6 @@ export default function Detalle() {
     }
   }, [id]);
 
-  // const talleLetras = producto.talle
-  //   ?.split(",")
-  //   .map((item) => item.split(":")[0].trim())
-  //   .join(" - ");
   return (
     <div className="DetalleCardContainer">
       {producto ? (

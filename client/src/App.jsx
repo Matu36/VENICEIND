@@ -71,26 +71,20 @@ function App() {
   const filtrarPorTalleYPrecio = () => {
     let camisasFiltradas = data;
 
-    // Aplicar filtro por talle
     if (filtroTalle) {
       camisasFiltradas = camisasFiltradas.filter((camisa) => {
-        // Verificar si talle es una cadena o una matriz
-        if (typeof camisa.talle === "string") {
-          // Si es una cadena, dividirla en una matriz
-          const tallesDisponibles = camisa.talle
-            .split(", ")
-            .map((talle) => talle.trim());
-          // Verificar si alguna de las tallas disponibles incluye el filtroTalle
-          return tallesDisponibles.includes(filtroTalle.trim());
-        } else {
-          // Si es una matriz, buscar directamente
-          return camisa.talle.some((talleGrupo) => {
-            const tallesDisponibles = talleGrupo
-              .split(", ")
-              .map((talle) => talle.trim());
-            return tallesDisponibles.includes(filtroTalle.trim());
-          });
-        }
+        const tallesDisponibles = camisa.talle
+          .split(", ")
+          .map((item) => item.split(":"))
+          .map(([talle, cantidad]) => ({
+            talle,
+            cantidad: parseInt(cantidad),
+          }));
+
+        return tallesDisponibles.some(
+          ({ talle, cantidad }) =>
+            talle.trim() === filtroTalle.trim() && cantidad > 0
+        );
       });
     }
 
@@ -160,6 +154,22 @@ function App() {
   const handleCerrarModalCarrito = () => {
     setModalCarrito(false);
     actualizarContadorCarrito();
+  };
+
+  const handleMostrarModalAbout = () => {
+    setModal(true);
+  };
+
+  const handleCerrarModalAbout = () => {
+    setModal(false);
+  };
+
+  const handleMostrarModalContact = () => {
+    setContact(true);
+  };
+
+  const handleCerrarModalContact = () => {
+    setContact(false);
   };
 
   const handleMostrarModalLogin = () => {
@@ -340,6 +350,29 @@ function App() {
       <div className="camisasContainer">
         <img src={VENICEEXPERIENCE} alt="camisas" className="camisasImg" />
       </div>
+      <FooterAlternativo
+        handleMostrarModalContact={handleMostrarModalContact}
+        handleMostrarModalAbout={handleMostrarModalAbout}
+      />
+
+      {contact && (
+        <div className="modal">
+          {/* <div className="modal-content"> */}
+          <Contact handleCerrarModalContact={handleCerrarModalContact} />
+          {/* </div> */}
+        </div>
+      )}
+      {modal && (
+        <div className="modal">
+          {/* <div className="modal-content"> */}
+          <AboutUs handleCerrarModalAbout={handleCerrarModalAbout} />
+          {/* </div> */}
+        </div>
+      )}
+      <hr style={{ color: "grey", maxWidth: "100%" }} />
+      <span className="copy">
+        Copyright © 2024 | Venice Indumentaria Todos los derechos reservados
+      </span>
     </div>
   );
 }
