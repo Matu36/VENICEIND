@@ -43,11 +43,16 @@ export default function Detalle() {
   return (
     <Layout>
       <div className="blue-bar">
-        <p>Prendas 100% ORIGINALES</p>
+        <p>Indumentaria de Calidad</p>
       </div>
+      <div className="brown-bar">
+        <p>Remeras para Hombre</p>
+      </div>
+
       <div className="DetalleCardContainer">
         {producto ? (
           <div className="DetalleCard">
+            <span className="detalleMarca">{producto.marca}</span>
             <Carousel
               additionalTransfrom={0}
               arrows={false}
@@ -103,11 +108,20 @@ export default function Detalle() {
               <img src={producto.imagen2} className="CarrouselImg" alt="" />
               <img src={producto.imagen3} className="CarrouselImg" alt="" />
             </Carousel>
-
-            <p>{producto.marca}</p>
-            <p>Precio: $ {producto.precio}</p>
-            <p>Código: {producto.codigo}</p>
-            <p>Talles: {producto.talle}</p>
+            <div className="precioDetalle">
+              <span>$ {producto.precio.toLocaleString()}</span>
+            </div>
+            <hr className="hrPersonalizado" />
+            <div className="tallesTitle">
+              <span>Talles</span>
+            </div>
+            <div className="tallesDetalle">
+              {producto.talle.split(", ").map((talle, index) => (
+                <span key={index} className="circuloTalle">
+                  {talle}
+                </span>
+              ))}
+            </div>
           </div>
         ) : (
           <div>Cargando...</div>
