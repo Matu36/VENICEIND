@@ -131,13 +131,16 @@ export default function NavBarAlternativo({ onSearchByMarca }) {
   window.addEventListener("scroll", function () {
     var blackBar = document.querySelector(".black-bar");
     var whiteBar = document.querySelector(".white-bar");
+    var brownBar = document.querySelector(".brown-bar");
 
     if (window.pageYOffset > 0) {
       whiteBar.classList.add("fixed");
       blackBar.style.visibility = "hidden";
+      brownBar.style.visibility = "hidden";
     } else {
       whiteBar.classList.remove("fixed");
       blackBar.style.visibility = "visible";
+      brownBar.style.visibility = "visible";
     }
   });
 

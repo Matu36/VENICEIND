@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -7,6 +7,8 @@ import Layout from "../pages/Layout";
 export default function Detalle() {
   const [producto, setProducto] = useState(null);
   const { id } = useParams();
+  const [selectedMarca, setSelectedMarca] = useState("");
+  const cardsContainerRef = useRef(null);
 
   useEffect(() => {
     const fetchProducto = async () => {
@@ -40,14 +42,30 @@ export default function Detalle() {
     }
   }, [id]);
 
+  const handleSearchByMarca = (marca) => {
+    const marcaNormalized =
+      marca.charAt(0).toUpperCase() + marca.slice(1).toLowerCase();
+    setSelectedMarca(marcaNormalized);
+
+    setTimeout(() => {
+      const firstCard = cardsContainerRef.current.querySelector(".card");
+      firstCard.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 0);
+  };
+
   return (
-    <Layout>
+    <Layout onSearchByMarca={handleSearchByMarca}>
       <div className="blue-bar">
-        <p>Prendas 100% ORIGINALES</p>
+        <p>Indumentaria de Calidad</p>
       </div>
+      <div className="brown-bar">
+        <p>Remeras para Hombre</p>
+      </div>
+
       <div className="DetalleCardContainer">
         {producto ? (
           <div className="DetalleCard">
+            <span className="detalleMarca">{producto.marca}</span>
             <Carousel
               additionalTransfrom={0}
               arrows={false}
@@ -103,11 +121,20 @@ export default function Detalle() {
               <img src={producto.imagen2} className="CarrouselImg" alt="" />
               <img src={producto.imagen3} className="CarrouselImg" alt="" />
             </Carousel>
-
-            <p>{producto.marca}</p>
-            <p>Precio: $ {producto.precio}</p>
-            <p>Código: {producto.codigo}</p>
-            <p>Talles: {producto.talle}</p>
+            <div className="precioDetalle">
+              <span>$ {producto.precio.toLocaleString()}</span>
+            </div>
+            <hr className="hrPersonalizado" />
+            <div className="tallesTitle">
+              <span>Talles</span>
+            </div>
+            <div className="tallesDetalle">
+              {producto.talle.split(", ").map((talle, index) => (
+                <span key={index} className="circuloTalle">
+                  {talle}
+                </span>
+              ))}
+            </div>
           </div>
         ) : (
           <div>Cargando...</div>
