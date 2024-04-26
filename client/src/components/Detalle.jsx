@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -7,6 +7,8 @@ import Layout from "../pages/Layout";
 export default function Detalle() {
   const [producto, setProducto] = useState(null);
   const { id } = useParams();
+  const [selectedMarca, setSelectedMarca] = useState("");
+  const cardsContainerRef = useRef(null);
 
   useEffect(() => {
     const fetchProducto = async () => {
@@ -40,8 +42,19 @@ export default function Detalle() {
     }
   }, [id]);
 
+  const handleSearchByMarca = (marca) => {
+    const marcaNormalized =
+      marca.charAt(0).toUpperCase() + marca.slice(1).toLowerCase();
+    setSelectedMarca(marcaNormalized);
+
+    setTimeout(() => {
+      const firstCard = cardsContainerRef.current.querySelector(".card");
+      firstCard.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 0);
+  };
+
   return (
-    <Layout>
+    <Layout onSearchByMarca={handleSearchByMarca}>
       <div className="blue-bar">
         <p>Indumentaria de Calidad</p>
       </div>

@@ -2212,22 +2212,28 @@ button:focus-visible {
 }
 
 .DetalleCard {
-  max-width: 800px;
   background-color: #fff;
   margin: 20px;
+  max-width: 500px;
+  width: 500px;
+}
+.CarrouselImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cubre el contenedor manteniendo la relación de aspecto */
+  margin-top: 1rem;
+}
+
+@media (max-width: 517px) {
+  .CarrouselImg {
+    max-width: 400px; /* Establece un ancho máximo a partir de 517px */
+  }
 }
 
 .DetalleCard h2 {
   font-size: 24px;
   color: #333;
   margin-bottom: 10px;
-}
-
-.CarrouselImg {
-  width: 500px;
-  max-width: 100%;
-  height: 500px;
-  margin-top: 1rem;
 }
 
 .DetalleCard p {
@@ -2330,6 +2336,10 @@ button:focus-visible {
 
 .circuloTalle:nth-child(3) {
   background-color: #9370db;
+}
+
+.circuloTalle:nth-child(4) {
+  background-color: yellow;
 }
 
 .tallesTitle {
