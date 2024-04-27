@@ -61,7 +61,7 @@ export default function FormProduct({ handleCerrarFormulario }) {
     cantidadTotal: "",
     precio: "",
     codigo: "",
-    talle: "",
+    talle: "M:, L:, XL:, XXL:",
   });
 
   const saveProduct = async (e) => {
@@ -159,12 +159,6 @@ export default function FormProduct({ handleCerrarFormulario }) {
             }
             placeholder="Precio"
           />
-          {/* {categorias.map((categoria) => (
-          <option key={categoria} value={categoria}>
-            {categoria}
-          </option>
-        ))}
-      </select> */}
         </div>
 
         <div>

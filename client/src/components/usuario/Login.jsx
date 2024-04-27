@@ -106,12 +106,11 @@ export default function Login({ handleCerrarModalLogin }) {
               <strong style={{ color: "red" }}>{errorMessage}</strong>
             )}
 
-            <button onClick={handleMostrarModalRecover}>
-              <span style={{ color: "blue" }}>¿Olvidaste tu contraeña?</span>
-            </button>
-
             <input type="submit" value="Ingresar" className="btn btn-success" />
           </form>
+          <button onClick={handleMostrarModalRecover}>
+            <span style={{ color: "blue" }}>¿Olvidaste tu contraeña?</span>
+          </button>
           {recover && (
             <div className="modal">
               <div className="modal-content">
@@ -131,9 +130,11 @@ export default function Login({ handleCerrarModalLogin }) {
               <p>Bienvenido a Comunidad Venice!</p>
             </div>
           )}
-          <span style={{ color: "blue" }}>
-            ¿Aún no pertenecés a Comunidad Venice?
-          </span>
+          <div>
+            <span style={{ color: "blue" }}>
+              ¿Aún no pertenecés a Comunidad Venice?
+            </span>
+          </div>
           <button onClick={handleMostrarModalRegistro}>Registráte</button>
         </div>
       )}

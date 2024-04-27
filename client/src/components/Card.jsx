@@ -13,6 +13,7 @@ const Card = ({
   imagen1,
   codigo,
   actualizarContadorCarrito,
+  scrollToCarousel,
 }) => {
   const [showAlert, setShowAlert] = useState(false);
   const [currentImage, setCurrentImage] = useState(imagen);
@@ -147,7 +148,10 @@ const Card = ({
         </p>
         <button
           style={{ background: "none", color: "chocolate" }}
-          onClick={handleDetalleClick}
+          onClick={() => {
+            handleDetalleClick();
+            scrollToCarousel();
+          }}
         >
           Ver detalle
         </button>

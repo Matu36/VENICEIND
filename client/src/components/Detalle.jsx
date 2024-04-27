@@ -3,12 +3,24 @@ import { useParams } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Layout from "../pages/Layout";
+import Card from "./Card";
+
+const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}productos`, {
+  method: "GET",
+  body: JSON.stringify(),
+  headers: {
+    "Content-type": "application/json",
+  },
+});
+
+const data = await request.json();
 
 export default function Detalle() {
   const [producto, setProducto] = useState(null);
   const { id } = useParams();
   const [selectedMarca, setSelectedMarca] = useState("");
   const cardsContainerRef = useRef(null);
+  const carouselRef = useRef(null);
 
   useEffect(() => {
     const fetchProducto = async () => {
@@ -42,6 +54,14 @@ export default function Detalle() {
     }
   }, [id]);
 
+  const filteredCamisas = data.filter((camisa) => {
+    if (selectedMarca === "Todas las marcas") {
+      return true;
+    }
+
+    return camisa.marca === selectedMarca;
+  });
+
   const handleSearchByMarca = (marca) => {
     const marcaNormalized =
       marca.charAt(0).toUpperCase() + marca.slice(1).toLowerCase();
@@ -53,6 +73,10 @@ export default function Detalle() {
     }, 0);
   };
 
+  const scrollToCarousel = () => {
+    carouselRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <Layout onSearchByMarca={handleSearchByMarca}>
       <div className="blue-bar">
@@ -62,7 +86,11 @@ export default function Detalle() {
         <p>Remeras para Hombre</p>
       </div>
 
-      <div className="DetalleCardContainer">
+      <div
+        ref={carouselRef}
+        id="carouselContainer"
+        className="DetalleCardContainer"
+      >
         {producto ? (
           <div className="DetalleCard">
             <span className="detalleMarca">{producto.marca}</span>
@@ -133,6 +161,16 @@ export default function Detalle() {
                 <span key={index} className="circuloTalle">
                   {talle}
                 </span>
+              ))}
+            </div>
+            <div ref={cardsContainerRef} className="cards-container" id="card">
+              {filteredCamisas.map((camisa) => (
+                <Card
+                  id="cards"
+                  key={camisa.id}
+                  {...camisa}
+                  scrollToCarousel={scrollToCarousel}
+                />
               ))}
             </div>
           </div>
