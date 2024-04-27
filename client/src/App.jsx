@@ -51,9 +51,6 @@ function App() {
       icon: false,
       theme: "dark",
     });
-    // if (localStorage.getItem("busqueda") != null) {
-    //   handleSearchByMarca(localStorage.getItem("busqueda"));
-    // }
   }, []);
 
   const filtrarPorTalleYPrecio = () => {
