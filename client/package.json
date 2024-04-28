@@ -10,12 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.32.0",
     "react": "^18.2.0",
     "react-big-calendar": "^1.11.6",
     "react-data-table-component": "^7.6.2",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
     "react-multi-carousel": "^2.8.5",
+    "react-query": "^3.39.3",
     "react-router-dom": "^6.22.1",
     "react-slick": "^0.29.0",
     "react-toastify": "^10.0.5",
@@ -29,6 +31,7 @@
     "videojs-contrib-hls": "^5.15.0"
   },
   "devDependencies": {
+    "@tanstack/react-query-devtools": "^5.32.0",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react": "^4.2.1",

@@ -147,7 +147,11 @@ export default function Detalle() {
               <img src={producto.imagen} className="CarrouselImg" alt="" />
               <img src={producto.imagen1} className="CarrouselImg" alt="" />
               <img src={producto.imagen2} className="CarrouselImg" alt="" />
-              <img src={producto.imagen3} className="CarrouselImg" alt="" />
+              <img
+                src={producto.imagen3 ? producto.imagen3 : null}
+                className="CarrouselImg"
+                alt=""
+              />
             </Carousel>
             <div className="precioDetalle">
               <span>$ {producto.precio.toLocaleString()}</span>
