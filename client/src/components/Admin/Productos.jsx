@@ -3,18 +3,21 @@ import DataTable from "react-data-table-component";
 import FormProduct from "./FormProduct";
 import Swal from "sweetalert2";
 import { MdModeEdit, MdDelete } from "react-icons/md";
+import { useProducto } from "../../hooks/useProductos";
 
-const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}productos`, {
-  method: "GET",
-  body: JSON.stringify(),
-  headers: {
-    "Content-type": "application/json",
-  },
-});
+// const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}productos`, {
+//   method: "GET",
+//   body: JSON.stringify(),
+//   headers: {
+//     "Content-type": "application/json",
+//   },
+// });
 
-const data = await request.json();
+// const data = await request.json();
 
 export default function Productos() {
+  const { data, isLoading } = useProducto().productosQuery;
+
   const [search, setSearch] = useState("");
   const [productos, setProductos] = useState(data);
 
@@ -44,7 +47,7 @@ export default function Productos() {
     if (!value) {
       setProductos(data);
     } else {
-      const arrayCache = data.filter(
+      const arrayCache = data?.filter(
         (oper) =>
           oper.marca.toLowerCase().includes(value.toLowerCase()) ||
           oper.codigo.toLowerCase().includes(value.toLowerCase())

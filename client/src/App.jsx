@@ -31,8 +31,6 @@ function App() {
 
   const { data, isLoading } = useProducto().productosQuery;
 
-  console.log(data);
-
   useEffect(() => {
     const storedAuth = JSON.parse(localStorage.getItem("auth"));
     if (storedAuth) {

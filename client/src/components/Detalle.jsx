@@ -4,16 +4,17 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Layout from "../pages/Layout";
 import Card from "./Card";
+import { useProducto } from "../hooks/useProductos";
 
-const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}productos`, {
-  method: "GET",
-  body: JSON.stringify(),
-  headers: {
-    "Content-type": "application/json",
-  },
-});
+// const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}productos`, {
+//   method: "GET",
+//   body: JSON.stringify(),
+//   headers: {
+//     "Content-type": "application/json",
+//   },
+// });
 
-const data = await request.json();
+// const data = await request.json();
 
 export default function Detalle() {
   const [producto, setProducto] = useState(null);
@@ -21,6 +22,8 @@ export default function Detalle() {
   const [selectedMarca, setSelectedMarca] = useState("");
   const cardsContainerRef = useRef(null);
   const carouselRef = useRef(null);
+
+  const { data, isLoading } = useProducto().productosQuery;
 
   useEffect(() => {
     const fetchProducto = async () => {
@@ -54,7 +57,7 @@ export default function Detalle() {
     }
   }, [id]);
 
-  const filteredCamisas = data.filter((camisa) => {
+  const filteredCamisas = data?.filter((camisa) => {
     if (selectedMarca === "Todas las marcas") {
       return true;
     }
