@@ -31,6 +31,8 @@ function App() {
 
   const { data, isLoading } = useProducto().productosQuery;
 
+  console.log(data);
+
   useEffect(() => {
     const storedAuth = JSON.parse(localStorage.getItem("auth"));
     if (storedAuth) {
@@ -89,7 +91,7 @@ function App() {
     }
 
     // Ordenar todas las camisas filtradas por precio
-    camisasFiltradas.sort((a, b) => {
+    camisasFiltradas?.sort((a, b) => {
       if (filtroPrecioTodos === "menorPrecio") {
         return a.precio - b.precio;
       } else if (filtroPrecioTodos === "mayorPrecio") {
@@ -108,7 +110,7 @@ function App() {
     setFiltroPrecioTodos("");
   };
 
-  const filteredCamisas = data.filter((camisa) => {
+  const filteredCamisas = data?.filter((camisa) => {
     if (selectedMarca === "Todas las marcas") {
       return true;
     }
@@ -163,12 +165,12 @@ function App() {
           <Videos />
         </div>
 
-        {!filteredCamisas.length > 0 && (
+        {!filteredCamisas?.length > 0 && (
           <div className="frasemarcas">
             <h2>NUESTRAS MARCAS DESTACADAS</h2>
           </div>
         )}
-        {!filteredCamisas.length > 0 && (
+        {!filteredCamisas?.length > 0 && (
           <div className="filtrosTodos">
             <h4>Filtrá por talle o precio</h4>
             <select
@@ -195,12 +197,12 @@ function App() {
         )}
         <div className="eleganzaContainer">
           <div className="navBarDiv">
-            {!filteredCamisas.length > 0 && !talle.length > 0 && (
+            {!filteredCamisas?.length > 0 && !talle?.length > 0 && (
               <h3 style={{ color: "black" }}>
                 <span>Seleccioná alguna de nuestras Marcas</span>
               </h3>
             )}
-            {!filteredCamisas.length > 0 && !talle.length > 0 && (
+            {!filteredCamisas?.length > 0 && !talle?.length > 0 && (
               <NavBar
                 onSelectMarca={setSelectedMarca}
                 onInicio={handleInicioClick}
@@ -210,7 +212,7 @@ function App() {
         </div>
 
         <div>
-          {filteredCamisas.length > 0 && (
+          {filteredCamisas?.length > 0 && (
             <div className="top-bar">
               <div>
                 <Filtros
@@ -233,7 +235,7 @@ function App() {
           )}
 
           <div ref={cardsContainerRef} className="cards-container" id="card">
-            {filteredCamisas.map((camisa) => (
+            {filteredCamisas?.map((camisa) => (
               <Card
                 id="cards"
                 key={camisa.id}
@@ -242,7 +244,7 @@ function App() {
               />
             ))}
           </div>
-          {!filteredCamisas.length > 0 && (
+          {!filteredCamisas?.length > 0 && (
             <div className="cards-container" id="card">
               {talle.map((camisa) => (
                 <Card
