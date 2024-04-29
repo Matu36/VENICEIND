@@ -8,16 +8,17 @@ import CargandoStock from "./components/CargandoStock";
 import Videos from "./components/Videos";
 import useAuth from "./hooks/useAuth";
 import Layout from "./pages/Layout";
+import { useProducto } from "./hooks/useProductos";
 
-const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}productos`, {
-  method: "GET",
-  body: JSON.stringify(),
-  headers: {
-    "Content-type": "application/json",
-  },
-});
+// const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}productos`, {
+//   method: "GET",
+//   body: JSON.stringify(),
+//   headers: {
+//     "Content-type": "application/json",
+//   },
+// });
 
-const data = await request.json();
+// const data = await request.json();
 
 function App() {
   const [selectedMarca, setSelectedMarca] = useState();
@@ -27,6 +28,8 @@ function App() {
   const [carritoC, setCarritoC] = useState(0);
   const cardsContainerRef = useRef(null);
   const { auth, setAuth } = useAuth();
+
+  const { data, isLoading } = useProducto().productosQuery;
 
   useEffect(() => {
     const storedAuth = JSON.parse(localStorage.getItem("auth"));
