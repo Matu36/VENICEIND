@@ -6,45 +6,26 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-
-const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}usuarios/all`, {
-  method: "GET",
-  body: JSON.stringify(),
-  headers: {
-    "Content-type": "application/json",
-    Authorization: localStorage.getItem("token"),
-  },
-});
-
-const data = await request.json();
-
-const allUsers = data.allUsers;
+import { useUsuario } from "../../../hooks/useUsuarios";
 
 export default function Chart({ title, dataKey, grid }) {
-  const usuarios = allUsers;
+  const { data, isLoading } = useUsuario().usuariosQuery;
 
-  const usuariosPorMes = {
-    ene: [],
-    feb: [],
-    mar: [],
-    abr: [],
-    may: [],
-    jun: [],
-    jul: [],
-    ago: [],
-    sep: [],
-    oct: [],
-    nov: [],
-    dic: [],
-  };
+  if (isLoading) {
+    return <div>Cargando...</div>;
+  }
+
+  // Verificar si hay datos
+  if (!data || !data.allUsers || data.allUsers.length === 0) {
+    return <div>No hay datos de usuarios para mostrar.</div>;
+  }
 
   // Agrupar usuarios por mes
-  const usuariosAgrupados = usuarios.reduce((acumulador, usuario) => {
+  const usuariosAgrupados = data.allUsers.reduce((acumulador, usuario) => {
     const fecha = new Date(usuario.createdAt);
     const mes = fecha.toLocaleString("default", { month: "short" });
     const mesAbreviado = mes.slice(0, 3); // Obtener las primeras tres letras del nombre del mes
     const anio = fecha.getFullYear();
-
     const clave = `${mesAbreviado}-${anio}`;
 
     if (!acumulador[clave]) {
@@ -54,27 +35,35 @@ export default function Chart({ title, dataKey, grid }) {
     return acumulador;
   }, {});
 
-  // Agregar usuarios agrupados a los meses correspondientes
-  Object.keys(usuariosPorMes).forEach((mes) => {
-    const anioActual = new Date().getFullYear();
-    const clave = `${mes}-${anioActual}`;
-    usuariosPorMes[mes] = usuariosAgrupados[clave] || [];
-  });
+  // Construir objeto con usuarios por mes
+  const usuariosPorMes = {
+    ene: usuariosAgrupados["ene-2024"] || [],
+    feb: usuariosAgrupados["feb-2024"] || [],
+    mar: usuariosAgrupados["mar-2024"] || [],
+    abr: usuariosAgrupados["abr-2024"] || [],
+    may: usuariosAgrupados["may-2024"] || [],
+    jun: usuariosAgrupados["jun-2024"] || [],
+    jul: usuariosAgrupados["jul-2024"] || [],
+    ago: usuariosAgrupados["ago-2024"] || [],
+    sep: usuariosAgrupados["sep-2024"] || [],
+    oct: usuariosAgrupados["oct-2024"] || [],
+    nov: usuariosAgrupados["nov-2024"] || [],
+    dic: usuariosAgrupados["dic-2024"] || [],
+  };
 
-  //Esto adecua el array de usuarios por mes al formato del dataKey
-  const data = [];
-  for (const [key, value] of Object.entries(usuariosPorMes)) {
-    data.push({
-      name: key.charAt(0).toUpperCase() + key.slice(1),
-      "Active User": value.length,
-    });
-  }
+  // Formatear datos para el gráfico
+  const dataForChart = Object.entries(usuariosPorMes).map(
+    ([mes, usuarios]) => ({
+      name: mes.charAt(0).toUpperCase() + mes.slice(1),
+      [dataKey]: usuarios.length,
+    })
+  );
 
   return (
     <div>
       <span>{title}</span>
       <ResponsiveContainer width="100%" aspect={4 / 1}>
-        <LineChart data={data}>
+        <LineChart data={dataForChart}>
           <XAxis dataKey="name" stroke="#5550bd" />
           <Line type="monotone" dataKey={dataKey} />
           <Tooltip />
