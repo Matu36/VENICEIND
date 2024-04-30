@@ -1815,6 +1815,7 @@ button:focus-visible {
   padding: 1rem;
   background-color: #0052cc;
   color: white;
+  width: 100%;
 }
 
 .navbarAdmin__left {
@@ -2163,7 +2164,7 @@ button:focus-visible {
   justify-content: space-around;
 }
 
-@media (max-width: 770px) {
+@media (max-width: 777px) {
   .widgetsContainer {
     display: block;
   }
@@ -2173,8 +2174,20 @@ button:focus-visible {
   color: black;
 }
 
+@media (max-width: 480px) {
+  .widgetLeft {
+    font-size: 12px;
+  }
+}
+
 .widgetRight {
   color: #000;
+}
+
+@media (max-width: 480px) {
+  .widgetRight {
+    font-size: 12px;
+  }
 }
 
 .userListContainer {
@@ -2206,12 +2219,25 @@ button:focus-visible {
   margin-right: 10px;
 }
 
+@media (max-width: 500px) {
+  .userListItem img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
 .userListItem div {
   flex-grow: 1;
 }
 
 .userListItem span {
   font-size: 16px;
+}
+
+@media (max-width: 540px) {
+  .userListItem span {
+    font-size: 12px;
+  }
 }
 
 .DetalleCardContainer {
