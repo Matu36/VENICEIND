@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import CarritoModal from "./CarritoModal";
 import Login from "./usuario/Login";
 import EditarUsuario from "./usuario/EditarUsuario";
+import { useNavigate } from "react-router-dom";
 
 export default function NavBarAlternativo({ onSearchByMarca }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,6 +18,8 @@ export default function NavBarAlternativo({ onSearchByMarca }) {
   const { auth, setAuth } = useAuth();
   const [edit, setEdit] = useState(false);
   const [login, setLogin] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedAuth = JSON.parse(localStorage.getItem("auth"));
@@ -147,7 +150,7 @@ export default function NavBarAlternativo({ onSearchByMarca }) {
   const handleLogout = () => {
     localStorage.clear();
     setAuth({});
-    window.location.reload();
+    navigate("/");
   };
 
   return (
