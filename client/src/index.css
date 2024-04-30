@@ -2131,6 +2131,12 @@ button:focus-visible {
   justify-content: space-between;
 }
 
+@media screen and (max-width: 777px) {
+  .featuredInfo {
+    display: block;
+  }
+}
+
 .infoBlock {
   width: calc(33.33% - 10px);
   padding: 10px;
@@ -2155,6 +2161,12 @@ button:focus-visible {
 .widgetsContainer {
   display: flex;
   justify-content: space-around;
+}
+
+@media (max-width: 770px) {
+  .widgetsContainer {
+    display: block;
+  }
 }
 
 .widgetLeft {
