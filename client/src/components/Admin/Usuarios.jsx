@@ -1,24 +1,30 @@
 import { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import useAuth from "../../hooks/useAuth";
+import { useUsuario } from "../../hooks/useUsuarios";
 
-const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}usuarios/all`, {
-  method: "GET",
-  body: JSON.stringify(),
-  headers: {
-    "Content-type": "application/json",
-    Authorization: localStorage.getItem("token"),
-  },
-});
+// const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}usuarios/all`, {
+//   method: "GET",
+//   body: JSON.stringify(),
+//   headers: {
+//     "Content-type": "application/json",
+//     Authorization: localStorage.getItem("token"),
+//   },
+// });
 
-const data = await request.json();
+// const data = await request.json();
 
-const allUsers = data.allUsers;
+// const allUsers = data.allUsers;
 
 export default function Usuarios() {
   const [search, setSearch] = useState("");
-  const [usuarios, setUsuarios] = useState(allUsers);
+
   const { auth, setAuth } = useAuth();
+  const { data, isLoading } = useUsuario().usuariosQuery;
+
+  const allUsers = data?.allUsers;
+
+  const [usuarios, setUsuarios] = useState(allUsers);
 
   //-------------------------------- SEARCHBAR --------------------------- //
 
@@ -35,7 +41,7 @@ export default function Usuarios() {
     if (!value) {
       setUsuarios(allUsers);
     } else {
-      const arrayCache = allUsers.filter(
+      const arrayCache = allUsers?.filter(
         (oper) =>
           oper.apellido.toLowerCase().includes(value.toLowerCase()) ||
           oper.email.toLowerCase().includes(value.toLowerCase())
