@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "../../hooks/useForm";
-import { Global } from "../../helpers/Global";
 import Registro from "./Registro";
 import RecoverPass from "./RecoverPass";
-import useAuth from "../../hooks/useAuth";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Login({ handleCerrarModalLogin }) {
   const { form, changed } = useForm({});
@@ -12,6 +11,10 @@ export default function Login({ handleCerrarModalLogin }) {
   const [recover, setRecover] = useState(false);
   const [showWelcomeMessage, setShowWelcomeMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const location = useLocation();
+
+  const navigate = useNavigate();
 
   const handleMostrarModalRegistro = () => {
     setRegistro(true);
@@ -77,11 +80,18 @@ export default function Login({ handleCerrarModalLogin }) {
       const timer = setTimeout(() => {
         setShowWelcomeMessage(false);
         handleCerrarModalLogin();
-        window.location.reload();
+
+        // Condición para determinar la ruta actual
+        if (location.pathname === "/") {
+          window.location.reload(); // Recargar la página si estamos en '/'
+        } else {
+          navigate("/");
+          window.location.reload();
+        }
       }, 2000);
       return () => clearTimeout(timer);
     }
-  }, [showWelcomeMessage]);
+  }, [showWelcomeMessage, location]);
 
   return (
     <div>

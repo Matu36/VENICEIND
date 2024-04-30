@@ -2,15 +2,15 @@
   "routes": [
     {
       "src": "/",
-      "dest": "/app.jsx"
+      "dest": "/App.jsx"
     },
     {
       "src": "/productos/:id",
-      "dest": "/detalle.jsx"
+      "dest": "/Detalle.jsx"
     },
     {
       "src": "/admin/*",
-      "dest": "/adminLayout.jsx"
+      "dest": "/AdminLayout.jsx"
     }
   ]
 }
