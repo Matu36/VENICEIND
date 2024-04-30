@@ -40,7 +40,7 @@ const AdminLayout = () => {
     <>
       <NavBarAdmin />
       <div className="containerAdmin">
-        <div className="sidebar">
+        <div className="sidebarAdmin">
           <SideBarAdmin />
         </div>
         <div className="content">

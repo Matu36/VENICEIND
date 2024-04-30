@@ -1794,13 +1794,6 @@ button:focus-visible {
   display: flex;
 }
 
-.sidebar {
-  width: 15%; /* Ancho de la barra lateral */
-  background-color: #0052cc;
-  color: white;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
 .content {
   flex: 1; /* El contenido ocupará todo el espacio restante */
   padding: 20px;
@@ -1815,17 +1808,9 @@ button:focus-visible {
   padding: 1rem;
   background-color: #0052cc;
   color: white;
-  width: 100%;
+  max-width: 100%;
 }
 
-.navbarAdmin__left {
-  flex: 1;
-}
-
-.navbarAdmin__right {
-  display: flex;
-  align-items: center;
-}
 
 .navbarAdmin__title {
   font-size: 1.25rem;
@@ -1868,14 +1853,39 @@ button:focus-visible {
   cursor: pointer;
 }
 
+@media (max-width: 650px) {
+  .navbarAdmin {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbarAdmin__left,
+  .navbarAdmin__right {
+    width: 100%; /* Asegura que ocupen todo el ancho disponible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbarAdmin__title {
+    margin-bottom: 1rem;
+  }
+
+  .navbarAdmin__icons {
+    margin-top: 1rem; /* Agrega un espacio entre los botones y el texto */
+  }
+}
+
+
+
 /* SIDEBAR */
 
 .sidebarAdmin {
   display: block;
-  height: 100vh;
   background-color: #0052cc;
   color: white;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 150px;
 }
 
 .sidebarAdmin__header {
@@ -1893,7 +1903,7 @@ button:focus-visible {
   width: 150px;
   height: 100px;
 
-  display: block;
+  /* display: block; */
 }
 
 .sidebarAdmin__content {
@@ -2147,6 +2157,14 @@ button:focus-visible {
   color: #000;
 }
 
+@media screen and (max-width: 777px) {
+  .infoBlock {
+    width: 80%;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+}
+
 .infoBlock:nth-child(1) {
   background-color: #ffcccc; /* Color para el primer infoBlock */
 }
@@ -2221,8 +2239,8 @@ button:focus-visible {
 
 @media (max-width: 500px) {
   .userListItem img {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -2236,7 +2254,8 @@ button:focus-visible {
 
 @media (max-width: 540px) {
   .userListItem span {
-    font-size: 12px;
+    font-size: 10px;
+    
   }
 }
 
