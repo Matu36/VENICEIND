@@ -27,7 +27,7 @@ export default function Videos() {
           autoPlay
           muted
           fluid
-          src="https://res.cloudinary.com/dmfzplfra/video/upload/v1711290729/VENICE/VIDEOS/Designer_1_koaqbc.mp4"
+          src="https://res.cloudinary.com/dmfzplfra/video/upload/v1714487422/VENICE/VIDEOS/ADIDAS_f8cpzn.mp4"
         />
       </div>
       <div className="video-group">
@@ -38,7 +38,7 @@ export default function Videos() {
           autoPlay
           muted
           fluid
-          src="https://res.cloudinary.com/dmfzplfra/video/upload/v1711342558/VENICE/VIDEOS/HOLLISTER_gx0nbk.mp4"
+          src="https://res.cloudinary.com/dmfzplfra/video/upload/v1714490039/VENICE/VIDEOS/Active_and_Dynamic_Sports_1_txjhtm.mp4"
         />
 
         <Player
@@ -48,7 +48,7 @@ export default function Videos() {
           autoPlay
           muted
           fluid
-          src="https://res.cloudinary.com/dmfzplfra/video/upload/v1711328296/VENICE/VIDEOS/levis_f8yulu.mp4"
+          src="https://res.cloudinary.com/dmfzplfra/video/upload/v1714489130/VENICE/VIDEOS/Calvin_Klein_The_Epitome_of_Style_zgcv2x.mp4"
         />
       </div>
     </div>
