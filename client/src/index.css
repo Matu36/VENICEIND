@@ -1829,8 +1829,6 @@ button:focus-visible {
   max-width: 100%;
 }
 
-
-
 .navbarAdmin__title {
   font-size: 1.25rem;
   font-weight: bold;
@@ -1962,7 +1960,7 @@ button:focus-visible {
 
 @media (max-width:500px) {
   .sidebarAdmin__button {
-    font-size: 10px;
+    font-size: 12px;
   }}
 
 .sidebarAdmin__button:hover {
@@ -2327,7 +2325,7 @@ button:focus-visible {
 
 @media (max-width: 540px) {
   .userListItem span {
-    font-size: 10px;
+    font-size: 12px;
     
   }
 }
