@@ -1,31 +1,34 @@
 import React, { useState, useEffect } from "react";
+import { useVenta } from "../../../hooks/useVentas";
 
 export default function WidgetLg() {
-  const [cargos, setCargos] = useState([]);
+  const { data, isLoaduing } = useVenta().fiveventasQuery;
+
+  const lastVentas = data?.lastVentas;
 
   return (
     <div className="userListContainer">
       <span>Últimas ventas realizadas</span>
+      <br />
       <table>
         <thead>
           <tr>
-            <th>Email</th>
+            <th>Comprador</th>
+            <th>Marca</th>
             <th>Precio</th>
-            <th>Producto</th>
+            <th>Fecha</th>
           </tr>
         </thead>
         <tbody>
-          {/* {VentasSlice.map((venta) => (
+          {lastVentas?.map((venta) => (
             <tr key={venta.id}>
-              <td
-               
-              >
-                {venta.metadata.user_email}
-              </td>
-              <td>${venta.amount}</td>
-              <td style={{ wordBreak: "break-all" }}></td>
+              <td>{venta.comprador}</td>
+
+              <td style={{ wordBreak: "break-all" }}> {venta.marca}</td>
+              <td>${venta.precio.toLocaleString()}</td>
+              <td>{venta.fecha}</td>
             </tr>
-          ))} */}
+          ))}
         </tbody>
       </table>
     </div>

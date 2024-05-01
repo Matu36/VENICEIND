@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Detalle from "../components/Detalle";
 import Calendario from "../components/Admin/Calendario";
+import Ventas from "../components/Admin/Ventas";
 
 const AppRouter = () => {
   return (
@@ -48,6 +49,7 @@ const AdminLayout = () => {
             <Route index element={<AppAdmin />} />
             <Route path="/Productos" element={<Productos />} />
             <Route path="/Usuarios" element={<Usuarios />} />
+            <Route path="/ventas" element={<Ventas />} />
             <Route path="/Calendario" element={<Calendario />} />
           </Routes>
         </div>
