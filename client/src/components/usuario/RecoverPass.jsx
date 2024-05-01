@@ -3,6 +3,8 @@ import { Global } from "../../helpers/Global";
 
 const RecoverPass = ({ handleCerrarModalRecover }) => {
   const [email, setEmail] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const resetPassword = async (email) => {
     try {
@@ -19,17 +21,23 @@ const RecoverPass = ({ handleCerrarModalRecover }) => {
 
       const data = await response.json();
       if (response.ok) {
-        console.log("Contraseña restablecida con éxito");
+        setSuccessMessage(
+          "Contraseña restablecida con éxito, te enviamos un email!"
+        );
       } else {
-        console.error("Error al restablecer la contraseña:", data.message);
+        setErrorMessage(
+          `Error al restablecer la contraseña, intentálo más tarde`
+        );
       }
     } catch (error) {
-      console.error("Error de red:", error);
+      setErrorMessage("Error de red: inténtalo más tarde");
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage("");
+    setSuccessMessage("");
     await resetPassword(email);
   };
 
@@ -43,6 +51,10 @@ const RecoverPass = ({ handleCerrarModalRecover }) => {
         <button onClick={handleCerrarModalRecover}>X</button>
       </div>
       <h3 className="spanemail">Ingresá tu Email</h3>
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
+      {successMessage && (
+        <div className="success-message">{successMessage}</div>
+      )}
       <form onSubmit={handleSubmit} className="formrecover">
         <input
           className="recover"
