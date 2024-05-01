@@ -282,7 +282,13 @@ export default function Productos() {
             <FormProduct handleCerrarFormulario={handleCerrarFormulario} />
           </div>
         )}
-        <DataTable columns={columns} data={productos} pagination striped />
+        <DataTable
+          columns={columns}
+          data={productos}
+          pagination
+          striped
+          responsive
+        />
       </div>
     </>
   );

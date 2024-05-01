@@ -2064,6 +2064,19 @@ button:focus-visible {
 }
 
 /* Productos */
+.productos {
+  width: auto
+}
+
+@media (max-width:800px) {
+  .productos {
+    max-width: 90%;
+  }}
+
+  @media (max-width:742px) {
+    .productos {
+      max-width: 80%;
+    }}
 
 .productos input {
   border-radius: 2%;
