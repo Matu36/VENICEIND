@@ -2,16 +2,9 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/app.jsx"
-    },
-    {
-      "src": "/productos/:id",
-      "dest": "/components/detalle.jsx"
-    },
-    {
-      "src": "/admin/",
-      "dest": "/components/Admin/appadmin.jsx"
+      "dest": "/main.jsx"
     }
+   
   ]
 }
 
