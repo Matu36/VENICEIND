@@ -15,6 +15,7 @@ const {
   putProductos,
   createProducto,
   deleteProducto,
+  getProductosVentas,
 } = require("../controllers/Productos");
 
 const {
@@ -23,7 +24,7 @@ const {
   getMercadoPago,
 } = require("../controllers/MercadoPago");
 
-const { getAllVentas } = require("../controllers/Ventas");
+const { getAllVentas, createVenta } = require("../controllers/Ventas");
 
 const check = require("../middlewares/auth");
 
@@ -43,6 +44,7 @@ router.get("/usuarios/lastFive", getLastLoggedInUsers);
 router.get("/usuarios/all", check.auth, getAllUsers);
 router.put("/usuarios/recoverpass", resetPassword);
 router.get("/productos", getProductos);
+router.get("/productos/ventas", getProductosVentas);
 router.get("/productos/:id", getProductoById);
 router.post("/productos/create", check.auth, createProducto);
 router.put("/productos/edit", check.auth, putProductos);
@@ -51,5 +53,6 @@ router.post("/payment", Payment);
 router.post("/paymentDBLOCAL", postVentaMercadoPago);
 router.get("/paymentDBLOCAL", getMercadoPago);
 router.get("/ventas", getAllVentas);
+router.post("/ventas/create", createVenta);
 
 module.exports = router;

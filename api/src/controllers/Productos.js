@@ -41,6 +41,34 @@ const getProductos = async (req, res) => {
   }
 };
 
+const getProductosVentas = async (req, res) => {
+  try {
+    const productos = await Productos.findAll({
+      attributes: ["id", "marca", "codigo", "precio", "imagen"],
+    });
+
+    if (!productos.length) {
+      return res.status(404).send("No hay Productos");
+    }
+
+    // Mapea los productos para devolver solo los campos requeridos
+    const productosFiltrados = productos.map(
+      ({ id, marca, codigo, precio, imagen }) => ({
+        id,
+        marca,
+        codigo,
+        precio,
+        imagen,
+      })
+    );
+
+    return res.send(productosFiltrados);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send("Error interno del servidor");
+  }
+};
+
 const getProductoById = async (req, res) => {
   try {
     const { id } = req.params; // Obtener el ID del parámetro de la URL
@@ -156,4 +184,5 @@ module.exports = {
   createProducto,
   deleteProducto,
   getProductoById,
+  getProductosVentas,
 };
