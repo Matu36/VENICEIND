@@ -25,17 +25,22 @@ export default function WidgetSm() {
   return (
     <div className="userListContainer">
       <span>Últimos usuarios registrados</span>
+      <br />
       <table>
-        {lastUsers?.map((user) => (
-          <div key={user.id}>
-            <div className="userListItem">
-              <img src={imgUsuarios} className="imgUsuario" />
-              <div>
-                <span>{user.email}</span>
-              </div>
-            </div>
-          </div>
-        ))}
+        <tbody>
+          {lastUsers?.map((user) => (
+            <tr key={user.id}>
+              <td>
+                <div className="userListItem">
+                  <img src={imgUsuarios} className="imgUsuario" />
+                  <div>
+                    <span>{user.email}</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );
