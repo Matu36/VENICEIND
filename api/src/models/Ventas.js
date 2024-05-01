@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
       },
       costo: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       precio: {
         type: DataTypes.INTEGER,
@@ -28,23 +28,23 @@ module.exports = (sequelize) => {
       },
       cuota1: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       cuota2: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       saldo: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       comprador: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: true,
       },
       vendedor: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: true,
       },
       fecha: {
         type: DataTypes.DATE,
