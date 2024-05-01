@@ -23,6 +23,8 @@ const {
   getMercadoPago,
 } = require("../controllers/MercadoPago");
 
+const { getAllVentas } = require("../controllers/Ventas");
+
 const check = require("../middlewares/auth");
 
 //VAMOS A USAR ESTO CUANDO NECESITEMOS TENER LOS DATOS DE DE SESION DEL USUARIO O CUANDO NECESITEMOS SEGURIDAD.
@@ -48,5 +50,6 @@ router.delete("/productos/delete", check.auth, deleteProducto);
 router.post("/payment", Payment);
 router.post("/paymentDBLOCAL", postVentaMercadoPago);
 router.get("/paymentDBLOCAL", getMercadoPago);
+router.get("/ventas", getAllVentas);
 
 module.exports = router;
