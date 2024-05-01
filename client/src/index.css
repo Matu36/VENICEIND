@@ -2103,6 +2103,15 @@ button:focus-visible {
   z-index: 999;
 }
 
+@media (max-width:815px) {
+  .FormProducto {
+    width: 350px;
+    position: absolute;
+    left: 20px;
+    top:50px;
+    
+  }}
+
 .FormProducto button.close-btn {
   font-size: 2rem;
   background-color: transparent;
