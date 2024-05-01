@@ -39,7 +39,25 @@ const createVenta = async (req, res) => {
   }
 };
 
+const getLastVentas = async (req, res) => {
+  try {
+    // Consulta a la base de datos para obtener los últimos 5 usuarios logueados
+    const lastVentas = await Ventas.findAll({
+      order: [["fecha", "DESC"]], // Ordena por fecha de creación en orden descendente
+      limit: 5, // Limita el resultado a 5 ventas
+    });
+
+    // Devuelve la lista de las últimos 5 ventas logueados en la respuesta
+    return res.status(200).json({ lastVentas });
+  } catch (error) {
+    console.error("Error al obtener las últimas 5 ventas:", error);
+    // Devuelve un mensaje de error en caso de fallo
+    return res.status(500).json({ error: "Error interno del servidor" });
+  }
+};
+
 module.exports = {
   getAllVentas,
   createVenta,
+  getLastVentas,
 };

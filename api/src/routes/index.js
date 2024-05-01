@@ -24,7 +24,11 @@ const {
   getMercadoPago,
 } = require("../controllers/MercadoPago");
 
-const { getAllVentas, createVenta } = require("../controllers/Ventas");
+const {
+  getAllVentas,
+  createVenta,
+  getLastVentas,
+} = require("../controllers/Ventas");
 
 const check = require("../middlewares/auth");
 
@@ -54,5 +58,6 @@ router.post("/paymentDBLOCAL", postVentaMercadoPago);
 router.get("/paymentDBLOCAL", getMercadoPago);
 router.get("/ventas", getAllVentas);
 router.post("/ventas/create", createVenta);
+router.get("/ventas/lastFive", getLastVentas);
 
 module.exports = router;
