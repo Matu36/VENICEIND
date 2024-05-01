@@ -204,9 +204,9 @@ const resetPassword = async (req, res) => {
     const user = await Usuarios.findOne({ where: { email } });
 
     if (!user) {
-      return res
-        .status(404)
-        .send("No se encontró un usuario con ese correo electrónico");
+      return res.status(404).json({
+        error: "No se encontró un usuario con ese correo electrónico",
+      });
     }
 
     // Generar una nueva contraseña aleatoria
@@ -223,12 +223,14 @@ const resetPassword = async (req, res) => {
     sendEmailWithTemplate(email, "newPassword", { password: user.password });
 
     // Enviar el nuevo password al correo electrónico del usuario
-    res.send("Se ha enviado un correo electrónico con la nueva contraseña");
+    res.json({
+      message: "Se ha enviado un correo electrónico con la nueva contraseña",
+    });
   } catch (error) {
     console.log(error);
-    return res
-      .status(500)
-      .send("Ocurrió un error al restablecer la contraseña");
+    return res.status(500).json({
+      error: "Ocurrió un error al restablecer la contraseña",
+    });
   }
 };
 
