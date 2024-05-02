@@ -1744,23 +1744,22 @@ button:focus-visible {
 }
 
 .error-message {
-  background-color: #f8d7da; 
-  color: #721c24; 
-  padding: 10px; 
-  border: 1px solid #f5c6cb; 
-  border-radius: 5px; 
-  margin-bottom: 10px; 
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .success-message {
-  background-color: #d4edda; 
-  color: #155724; 
-  padding: 10px; 
-  border: 1px solid #c3e6cb; 
-  border-radius: 5px; 
-  margin-bottom: 10px; 
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
-
 
 .user-info {
   position: absolute;
@@ -1813,8 +1812,14 @@ button:focus-visible {
 }
 
 .content {
-  flex: 1; 
+  flex: 1;
   padding: 10px;
+}
+
+@media screen and (max-width: 770px) {
+  .content {
+    display: inline;
+  }
 }
 
 /* NAVBAR */
@@ -1823,7 +1828,7 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 10px 10px 0 0; 
+  border-radius: 10px 10px 0 0;
   background-color: grey;
   color: white;
   max-width: 100%;
@@ -1844,7 +1849,6 @@ button:focus-visible {
   align-items: center;
 }
 
-
 .navbarAdmin__icons > button,
 .navbarAdmin__icons > div {
   margin-right: 10px; /* Añade espacio entre el botón y el contenedor de texto */
@@ -1859,13 +1863,14 @@ button:focus-visible {
 @media (max-width: 777px) {
   .navbarAdmin__icons {
     display: inline;
-    
-  }}
+  }
+}
 
 @media (max-width: 777px) {
   .navbarAdmin__icon-button {
     display: none;
-  }}
+  }
+}
 
 .navbarAdmin__badge {
   background-color: red;
@@ -1905,8 +1910,6 @@ button:focus-visible {
   }
 }
 
-
-
 /* SIDEBAR */
 
 .sidebarAdmin {
@@ -1917,10 +1920,11 @@ button:focus-visible {
   width: 150px;
 }
 
-@media (max-width:500px) {
+@media (max-width: 500px) {
   .sidebarAdmin {
     width: 100px;
-  }}
+  }
+}
 
 .sidebarAdmin__header {
   display: flex;
@@ -1949,19 +1953,20 @@ button:focus-visible {
 .sidebarAdmin__button {
   display: flex;
   align-items: center;
-  justify-content: center; 
-  padding: 10px 0; 
+  justify-content: center;
+  padding: 10px 0;
   border-radius: 4px;
   transition: background-color 0.2s;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
   background-color: black;
-  width: 100%; 
+  width: 100%;
 }
 
-@media (max-width:500px) {
+@media (max-width: 500px) {
   .sidebarAdmin__button {
     font-size: 12px;
-  }}
+  }
+}
 
 .sidebarAdmin__button:hover {
   background-color: #0052cc;
@@ -1978,7 +1983,6 @@ button:focus-visible {
 .sidebarAdmin__label {
   margin-left: 10px; /* Añade espacio entre el icono y el texto */
 }
-
 
 /* Utiliza los iconos directamente en el botón para simplificar */
 .FaHome::before {
@@ -2013,13 +2017,14 @@ button:focus-visible {
 .calendar-container {
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
-  margin-top: 3rem;
+  flex-direction: column;
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 5%;
-  max-width: 55%;
+  max-width: 75%;
   border: 3px solid gray;
-  margin: auto;
 }
 
 /* Estilo del calendario */
@@ -2082,18 +2087,20 @@ button:focus-visible {
 
 /* Productos */
 .productos {
-  width: auto
+  width: auto;
 }
 
-@media (max-width:800px) {
+@media (max-width: 800px) {
   .productos {
     max-width: 90%;
-  }}
+  }
+}
 
-  @media (max-width:742px) {
-    .productos {
-      max-width: 80%;
-    }}
+@media (max-width: 742px) {
+  .productos {
+    max-width: 80%;
+  }
+}
 
 .productos input {
   border-radius: 2%;
@@ -2133,14 +2140,14 @@ button:focus-visible {
   z-index: 999;
 }
 
-@media (max-width:815px) {
+@media (max-width: 815px) {
   .FormProducto {
     width: 350px;
     position: absolute;
     left: 20px;
-    top:50px;
-    
-  }}
+    top: 50px;
+  }
+}
 
 .FormProducto button.close-btn {
   font-size: 2rem;
@@ -2200,6 +2207,8 @@ button:focus-visible {
 .featuredInfo {
   display: flex;
   justify-content: space-between;
+  margin-left: 1rem;
+  margin-top: 1rem;
 }
 
 @media screen and (max-width: 777px) {
@@ -2269,14 +2278,14 @@ button:focus-visible {
 }
 
 .userListContainer {
-  border: 2px solid #4a90e2; /* Borde más grueso y con un color más llamativo */
-  border-radius: 10px; /* Borde redondeado */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
-  background-color: #f0f8ff; /* Color de fondo */
-  padding: 20px; /* Aumentar el espacio interno */
+  border: 2px solid #4a90e2;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #f0f8ff;
+  padding: 20px;
   margin-top: 1rem;
+  margin-left: 1rem;
 }
-
 
 .userListContainer span {
   display: block;
@@ -2287,7 +2296,7 @@ button:focus-visible {
 
 .userListItem {
   display: flex;
-  align-items: flex-start; 
+  align-items: flex-start;
   margin-bottom: 5px;
 }
 
@@ -2301,7 +2310,7 @@ button:focus-visible {
 .userListItem div {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; 
+  align-items: flex-start;
 }
 
 .userListItem span {
@@ -2326,7 +2335,6 @@ button:focus-visible {
 @media (max-width: 540px) {
   .userListItem span {
     font-size: 12px;
-    
   }
 }
 
@@ -2483,4 +2491,13 @@ button:focus-visible {
   margin: 0 auto;
   border: 0;
   border-top: 1px solid #ccc;
+}
+
+.chart {
+  margin-left: 1rem;
+}
+
+.inputSearch {
+  margin-top: 1rem;
+  margin-left: 1rem;
 }

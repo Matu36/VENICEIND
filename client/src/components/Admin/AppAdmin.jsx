@@ -10,7 +10,9 @@ export default function AppAdmin({ allUsers }) {
       <FeaturedInfo />
 
       <h3 style={{ color: "black" }}>Análitica de Usuarios</h3>
-      <Chart data={allUsers} grid dataKey="Active User" />
+      <div className="chart">
+        <Chart data={allUsers} grid dataKey="Active User" />
+      </div>
       <div className="widgetsContainer">
         <div className="widgetLeft">
           <WidgetSm />
