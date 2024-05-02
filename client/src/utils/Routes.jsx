@@ -44,15 +44,15 @@ const AdminLayout = () => {
         <div className="sidebarAdmin">
           <SideBarAdmin />
         </div>
-        <div className="content">
-          <Routes>
-            <Route index element={<AppAdmin />} />
-            <Route path="/Productos" element={<Productos />} />
-            <Route path="/Usuarios" element={<Usuarios />} />
-            <Route path="/ventas" element={<Ventas />} />
-            <Route path="/Calendario" element={<Calendario />} />
-          </Routes>
-        </div>
+        {/* <div className="content"> */}
+        <Routes>
+          <Route index element={<AppAdmin />} />
+          <Route path="/Productos" element={<Productos />} />
+          <Route path="/Usuarios" element={<Usuarios />} />
+          <Route path="/ventas" element={<Ventas />} />
+          <Route path="/Calendario" element={<Calendario />} />
+        </Routes>
+        {/* </div> */}
       </div>
     </>
   );
