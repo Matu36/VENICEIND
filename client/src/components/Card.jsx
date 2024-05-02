@@ -12,13 +12,19 @@ const Card = ({
   cantidadTotal,
   imagen1,
   codigo,
-  actualizarContadorCarrito,
+
   scrollToCarousel,
 }) => {
   const [showAlert, setShowAlert] = useState(false);
   const [currentImage, setCurrentImage] = useState(imagen);
   const [showModal, setShowModal] = useState(false);
   const [selectedTalles, setSelectedTalles] = useState([]);
+  const [carritoC, setCarritoC] = useState(0);
+
+  const actualizarContadorCarrito = () => {
+    const count = carrito.length;
+    setCarritoC(count);
+  };
 
   const handleTalleChange = (talle) => {
     if (selectedTalles.includes(talle)) {
