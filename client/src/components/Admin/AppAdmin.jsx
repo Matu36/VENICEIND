@@ -6,7 +6,7 @@ import FeaturedInfo from "./Widgets/FeaturedInfo";
 
 export default function AppAdmin({ allUsers }) {
   return (
-    <div>
+    <div className="appadmin">
       <FeaturedInfo />
 
       <h3 style={{ color: "black" }}>Análitica de Usuarios</h3>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import CardAmpliada from "./CardAmpliada";
 import soldout from "../assets/img/soldOut.png";
 import { useNavigate } from "react-router-dom";
+
 const Card = ({
   id,
   marca,
@@ -86,8 +87,10 @@ const Card = ({
     carrito.push(productoComprado);
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
-    actualizarContadorCarrito();
+
     setShowAlert(true);
+
+    actualizarContadorCarrito();
   };
 
   return (
