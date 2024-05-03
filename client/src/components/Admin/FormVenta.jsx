@@ -75,6 +75,7 @@ export default function FormVenta({ handleCerrarFormulario }) {
 
         <label htmlFor="marca">Marca:</label>
         <input
+          style={{ color: "black" }}
           type="text"
           id="marca"
           name="marca"
@@ -85,6 +86,7 @@ export default function FormVenta({ handleCerrarFormulario }) {
 
         <label htmlFor="precio">Precio:</label>
         <input
+          style={{ color: "black" }}
           type="number"
           id="precio"
           name="precio"
