@@ -43,7 +43,9 @@ export default function EditarUsuario({ handleCerrarModalEdit }) {
   return (
     <div className="registro-container">
       <div className="button-close-login">
-        <button onClick={handleCerrarModalEdit}>X</button>
+        <button onClick={handleCerrarModalEdit} style={{ color: "black" }}>
+          X
+        </button>
       </div>
       <div className="datos">
         <h4>Modificá tus datos</h4>

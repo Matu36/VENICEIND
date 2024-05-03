@@ -126,9 +126,10 @@ const Card = ({
         <p>
           Talles:
           {talle
-            ?.split(",")
-            .map((item) => item.split(":")[0].trim())
-            .map((talle, index) => (
+            ?.split(", ")
+            .map((item) => item.split(":"))
+            .filter(([index, cantidad]) => parseInt(cantidad) > 0)
+            .map(([talle, index]) => (
               <label key={index}>
                 <input
                   type="checkbox"

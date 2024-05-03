@@ -48,7 +48,9 @@ const RecoverPass = ({ handleCerrarModalRecover }) => {
   return (
     <div className="registro-container">
       <div className="button-close-login">
-        <button onClick={handleCerrarModalRecover}>X</button>
+        <button onClick={handleCerrarModalRecover} style={{ color: "black" }}>
+          X
+        </button>
       </div>
       <h3 className="spanemail">Ingresá tu Email</h3>
       {errorMessage && <div className="error-message">{errorMessage}</div>}

@@ -98,7 +98,9 @@ export default function Login({ handleCerrarModalLogin }) {
       {!registro && (
         <div className="login-container">
           <div className="button-close-login">
-            <button onClick={handleCerrarModalLogin}>X</button>
+            <button onClick={handleCerrarModalLogin} style={{ color: "black" }}>
+              X
+            </button>
           </div>
 
           <form className="login-form" onSubmit={loginUser}>

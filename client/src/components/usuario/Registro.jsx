@@ -51,7 +51,9 @@ export default function Registro({ handleCerrarModalRegistro }) {
   return (
     <div className="registro-container">
       <div className="button-close-login">
-        <button onClick={handleCerrarModalRegistro}>X</button>
+        <button onClick={handleCerrarModalRegistro} style={{ color: "black" }}>
+          X
+        </button>
       </div>
       <div className="datos">
         <h4>Ingresá tus datos</h4>
