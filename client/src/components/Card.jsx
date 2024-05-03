@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import CardAmpliada from "./CardAmpliada";
 import soldout from "../assets/img/soldOut.png";
+import { FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
 const Card = ({
   id,
   marca,
@@ -119,6 +121,16 @@ const Card = ({
         className="card-image"
         onClick={handleImageClick}
       />
+      <button
+        className="verdetalle"
+        onClick={() => {
+          handleDetalleClick();
+          scrollToCarousel();
+        }}
+      >
+        <FaSearch className="lupa" />
+        Detalle
+      </button>
 
       <div className="card-content">
         <p>{marca ? marca : null} </p>
@@ -147,15 +159,6 @@ const Card = ({
         <p style={{ color: "grey", fontSize: "10px", marginTop: "10px" }}>
           Código: {codigo}
         </p>
-        <button
-          style={{ background: "none", color: "chocolate" }}
-          onClick={() => {
-            handleDetalleClick();
-            scrollToCarousel();
-          }}
-        >
-          Ver detalle
-        </button>
 
         {cantidadTotal === 0 && (
           <div className="soldOut-container">

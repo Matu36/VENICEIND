@@ -223,21 +223,24 @@ button:focus-visible {
 /* Estilos del botón "Comprar" */
 
 .comprar {
-  background-color: black;
-  color: #ecf0f1;
-  padding: 5px 10px;
-  font-size: 14px;
+  background-color: rgb(64, 148, 218);
+  color: white;
+  padding: 10px 20px;
+  font-size: 18px;
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
   cursor: pointer;
   transition:
     background-color 0.3s,
     color 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin-top: -5rem;
 }
 
 .comprar:hover {
-  color: #777;
+  color: white;
+  background-color: rgb(71, 119, 163);
   transition: none;
 }
 
@@ -1370,6 +1373,7 @@ button:focus-visible {
 .white-bar img {
   max-width: 100px;
   height: auto;
+  margin-top: 1rem;
 }
 
 @media screen and (max-width: 624px) {
@@ -2500,4 +2504,33 @@ button:focus-visible {
 .inputSearch {
   margin-top: 1rem;
   margin-left: 1rem;
+}
+
+.verdetalle {
+  background-color: white;
+  border: none;
+  color: #ccc;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 28px;
+  width: 70%;
+}
+
+.verdetalle .lupa {
+  margin-right: 5px;
+  color: #ccc;
+}
+
+.verdetalle:hover {
+  background-color: rgb(252, 252, 252);
+  color: gray;
+}
+
+.verdetalle:active {
+  background-color: rgb(179, 170, 170);
 }
