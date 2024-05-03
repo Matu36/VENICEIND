@@ -1811,20 +1811,13 @@ button:focus-visible {
 
 /* PANEL DE ADMIN */
 
+
+
 .containerAdmin {
   display: flex;
+  
 }
 
-.content {
-  flex: 1;
-  padding: 10px;
-}
-
-@media screen and (max-width: 770px) {
-  .content {
-    display: inline;
-  }
-}
 
 /* NAVBAR */
 
@@ -1922,6 +1915,7 @@ button:focus-visible {
   color: white;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   width: 150px;
+ 
 }
 
 @media (max-width: 500px) {
@@ -2091,7 +2085,8 @@ button:focus-visible {
 
 /* Productos */
 .productos {
-  width: auto;
+  width: 90%;
+  margin: auto;
 }
 
 @media (max-width: 800px) {
@@ -2213,6 +2208,8 @@ button:focus-visible {
   justify-content: space-between;
   margin-left: 1rem;
   margin-top: 1rem;
+  width: 100%;
+  
 }
 
 @media screen and (max-width: 777px) {
@@ -2228,11 +2225,12 @@ button:focus-visible {
   border-radius: 5px;
   background-color: #f0f0f0;
   color: #000;
+ 
 }
 
 @media screen and (max-width: 777px) {
   .infoBlock {
-    width: 100%;
+    width: 95%;
     padding: 0;
     margin-bottom: 1rem;
   }

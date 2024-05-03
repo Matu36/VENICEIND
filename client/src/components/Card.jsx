@@ -3,7 +3,9 @@ import CardAmpliada from "./CardAmpliada";
 import soldout from "../assets/img/soldOut.png";
 import { FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+
 import { FaSearch } from "react-icons/fa";
+
 const Card = ({
   id,
   marca,
@@ -88,8 +90,10 @@ const Card = ({
     carrito.push(productoComprado);
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
-    actualizarContadorCarrito();
+
     setShowAlert(true);
+
+    actualizarContadorCarrito();
   };
 
   return (
