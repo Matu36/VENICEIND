@@ -137,7 +137,7 @@ const Card = ({
       </button>
 
       <div className="card-content">
-        <p>{marca ? marca : null} </p>
+        <p style={{ fontSize: "14px" }}>{marca ? marca : null} </p>
         <p>{nombre ? nombre : null} </p>
         <p>
           Talles:
@@ -159,7 +159,7 @@ const Card = ({
         </p>
         <p> {selectedTalles.join(", ")}</p>
 
-        <p>Precio: $ {precio}</p>
+        <p style={{ fontSize: "14px" }}>$ {precio.toLocaleString()}</p>
         <p style={{ color: "grey", fontSize: "10px", marginTop: "10px" }}>
           Código: {codigo}
         </p>
