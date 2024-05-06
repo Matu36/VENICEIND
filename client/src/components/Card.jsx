@@ -119,23 +119,24 @@ const Card = ({
           </div>
         </div>
       )}
-      <img
-        src={currentImage}
-        alt=""
-        className="card-image"
-        onClick={handleImageClick}
-      />
-      <button
-        className="verdetalle"
-        onClick={() => {
-          handleDetalleClick();
-          scrollToCarousel();
-        }}
-      >
-        <FaSearch className="lupa" />
-        Detalle
-      </button>
-
+      <div className="image-container">
+        <img
+          src={currentImage}
+          alt=""
+          className="card-image"
+          onClick={handleImageClick}
+        />
+        <button
+          className="verdetalle"
+          onClick={() => {
+            handleDetalleClick();
+            scrollToCarousel();
+          }}
+        >
+          <FaSearch className="lupa" />
+          Detalle
+        </button>
+      </div>
       <div className="card-content">
         <p style={{ fontSize: "14px" }}>{marca ? marca : null} </p>
         <p>{nombre ? nombre : null} </p>

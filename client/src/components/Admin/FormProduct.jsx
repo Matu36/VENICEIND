@@ -64,6 +64,8 @@ export default function FormProduct({ handleCerrarFormulario }) {
     talle: "M:, L:, XL:, XXL:",
   });
 
+  console.log(producto);
+
   const saveProduct = async (e) => {
     e.preventDefault();
 

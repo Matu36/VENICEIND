@@ -131,8 +131,7 @@ button:focus-visible {
   flex-direction: column;
   align-items: center;
   padding: 10px 20px;
-  /* border: 1px solid #ddd; */
-  max-width: 180px;
+  max-width: 350px;
   width: 180px;
   margin: 2px;
   background-color: #f5f5f5;
@@ -154,14 +153,14 @@ button:focus-visible {
 
 .card img {
   width: 100%;
-  height: 300px;
+  height: 250px;
   border-radius: 10px;
   margin-bottom: 10px;
 }
 
 @media (max-width: 547px) {
   .card img {
-    height: 300px;
+    height: 250px;
   }
 }
 
@@ -2506,16 +2505,14 @@ button:focus-visible {
 
 .verdetalle {
   position: absolute;
-  top: 55%;
+  top: 85%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: rgba(255, 255, 255, 0.5);
   border: none;
   color: black;
   padding: 10px 20px;
-  text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 12px;
   margin: 4px 2px;
   cursor: pointer;
@@ -2532,7 +2529,7 @@ button:focus-visible {
 @media (min-width: 683px) {
   .verdetalle {
     width: 70%;
-    top: 50%;
+    top: 80%;
   }
 }
 
@@ -2548,4 +2545,10 @@ button:focus-visible {
 .verdetalle .lupa {
   margin-right: 5px;
   color: black;
+}
+
+
+.image-container {
+  position: relative;
+
 }

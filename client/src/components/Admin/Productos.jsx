@@ -5,16 +5,6 @@ import Swal from "sweetalert2";
 import { MdModeEdit, MdDelete } from "react-icons/md";
 import { useProducto } from "../../hooks/useProductos";
 
-// const request = await fetch(`${import.meta.env.VITE_BACKEND_URL}productos`, {
-//   method: "GET",
-//   body: JSON.stringify(),
-//   headers: {
-//     "Content-type": "application/json",
-//   },
-// });
-
-// const data = await request.json();
-
 export default function Productos() {
   const { data, isLoading } = useProducto().productosQuery;
 
