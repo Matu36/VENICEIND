@@ -157,7 +157,6 @@ const Card = ({
               </label>
             ))}
         </p>
-        <p> {selectedTalles.join(", ")}</p>
 
         <p>Precio: $ {precio}</p>
         <p style={{ color: "grey", fontSize: "10px", marginTop: "10px" }}>

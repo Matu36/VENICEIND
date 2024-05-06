@@ -39,13 +39,9 @@ export default function CardAmpliada({
       <img src={currentImage} alt="Imagen ampliada" />
       <div>
         <span style={{ color: "black", fontWeight: "bold" }}>
-          Precio: $ {precio}
+          $ {precio.toLocaleString()}
         </span>
       </div>
-      <span style={{ color: "black", fontWeight: "bold" }}>
-        {" "}
-        {talle && <p>Talle: {talle}</p>}
-      </span>
     </div>
   );
 }
