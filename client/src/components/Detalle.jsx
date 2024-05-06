@@ -149,7 +149,9 @@ export default function Detalle() {
             >
               <img src={producto.imagen} className="CarrouselImg" alt="" />
               <img src={producto.imagen1} className="CarrouselImg" alt="" />
-              <img src={producto.imagen2} className="CarrouselImg" alt="" />
+              {producto.imagen2 ? (
+                <img src={producto.imagen2} className="CarrouselImg" alt="" />
+              ) : null}
               {producto.imagen3 ? (
                 <img src={producto.imagen3} className="CarrouselImg" alt="" />
               ) : null}
