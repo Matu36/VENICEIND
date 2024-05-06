@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 
-export default function CardAmpliada({
-  imagen,
-  imagen1,
-  precio,
-  talle,
-  onClose,
-}) {
+export default function CardAmpliada({ imagen, imagen1, precio, onClose }) {
   const [currentImage, setCurrentImage] = useState(imagen);
 
+  // pasar mouse por arriba
   const handleMouseOver = () => {
     setCurrentImage(imagen1);
   };
