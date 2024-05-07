@@ -160,16 +160,23 @@ export default function Detalle() {
               <span>$ {producto.precio.toLocaleString()}</span>
             </div>
             <hr className="hrPersonalizado" />
-            <div className="tallesTitle">
-              <span>Talles</span>
-            </div>
-            <div className="tallesDetalle">
-              {producto.talle.split(", ").map((talle, index) => (
-                <span key={index} className="circuloTalle">
-                  {talle}
-                </span>
-              ))}
-            </div>
+            {producto.cantidadTotal > 0 ? (
+              <div>
+                <div className="tallesTitle">
+                  <span>Talles</span>
+                </div>
+                <div className="tallesDetalle">
+                  {producto.talle.split(", ").map((talle, index) => (
+                    <span key={index} className="circuloTalle">
+                      {talle}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <span style={{ color: "gray" }}>No hay stock</span>
+            )}
+
             <div ref={cardsContainerRef} className="cards-container" id="card">
               {filteredCamisas.map((camisa) => (
                 <Card
