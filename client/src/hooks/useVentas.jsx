@@ -30,6 +30,7 @@ export const useVenta = () => {
   const ventaMutation = useMutation({
     mutationKey: ["venta-mutation"],
     mutationFn: (data) => postVenta(data),
+
     onSuccess: () => {
       Swal.fire({
         position: "center",
@@ -38,9 +39,12 @@ export const useVenta = () => {
         showConfirmButton: false,
         timer: 2000,
       });
+
+      if (ventasQuery && !ventasQuery.isLoading) {
+        ventasQuery.refetch();
+      }
     },
     onError: (data) => {
-      // Manejar errores de manera diferente según el status de la respuesta
       switch (data.response.status) {
         case 404:
           Swal.fire({

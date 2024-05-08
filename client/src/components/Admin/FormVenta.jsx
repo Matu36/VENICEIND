@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useVenta } from "../../hooks/useVentas";
 import { useProducto } from "../../hooks/useProductos";
+import Spinner from "../../UI/Spinner";
 
 export default function FormVenta({ handleCerrarFormulario }) {
   const [formData, setFormData] = useState({
@@ -13,12 +14,12 @@ export default function FormVenta({ handleCerrarFormulario }) {
     saldo: 0,
     comprador: "",
     vendedor: "",
-    fecha: new Date().toISOString().slice(0, 10), // Fecha actual en formato YYYY-MM-DD
+    fecha: new Date().toISOString().slice(0, 10),
   });
 
   const { mutate } = useVenta().ventaMutation;
 
-  const { data, isLoading, refetch } = useProducto().productosventasQuery;
+  const { data, isLoading } = useProducto().productosventasQuery;
 
   const handleCodigoChange = (event) => {
     const selectedIndex = event.target.value;
@@ -45,7 +46,9 @@ export default function FormVenta({ handleCerrarFormulario }) {
     event.preventDefault();
 
     mutate(formData);
-    refetch();
+    setTimeout(() => {
+      handleCerrarFormulario();
+    }, 1000);
   };
 
   return (
@@ -150,6 +153,7 @@ export default function FormVenta({ handleCerrarFormulario }) {
         />
         <div className="agregarProducto">
           <button type="submit">Enviar</button>
+          {isLoading && <Spinner />}
         </div>
       </form>
     </div>
